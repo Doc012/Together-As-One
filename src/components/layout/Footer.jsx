@@ -1,44 +1,148 @@
-import { FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp, FaCode, FaExternalLinkAlt } from 'react-icons/fa';
 
-export default function Footer() {
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-800 text-white py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <h2 className="text-xl font-bold mb-2">Emfuleni Water Help</h2>
-            <p className="text-gray-400 text-sm max-w-md">
-              A community initiative to help Emfuleni residents during the 16-day water outage from 30 May to 14 June 2025.
-            </p>
-          </div>
-          
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-lg font-medium mb-2">Connect With Us</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <FaFacebook size={24} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <FaTwitter size={24} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <FaWhatsapp size={24} />
-                </a>
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Logo and mission */}
+          <div className="col-span-1 md:col-span-1">
+            <div className="flex items-center mb-4">
+              <div className="p-2 rounded-full bg-blue-900/30 mr-3">
+                <svg 
+                  className="w-8 h-8 text-blue-400"
+                  viewBox="0 0 24 24" 
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                  <circle cx="12" cy="7" r="2.5" fill="currentColor" opacity="0.8" />
+                  <circle cx="7" cy="14" r="2.5" fill="currentColor" opacity="0.8" />
+                  <circle cx="17" cy="14" r="2.5" fill="currentColor" opacity="0.8" />
+                  <line x1="10" y1="8.5" x2="8" y2="12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="14" y1="8.5" x2="16" y2="12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="9" y1="14" x2="15" y2="14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
               </div>
+              <span className="font-bold text-xl">Together As One</span>
+            </div>
+            <p className="text-gray-400 text-sm mb-4">
+              Building community resilience through water solidarity.
+            </p>
+            <div className="flex space-x-4">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <FaFacebook size={20} />
+                <span className="sr-only">Facebook</span>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <FaTwitter size={20} />
+                <span className="sr-only">Twitter</span>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+                <FaInstagram size={20} />
+                <span className="sr-only">Instagram</span>
+              </a>
+              <a href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors">
+                <FaWhatsapp size={20} />
+                <span className="sr-only">WhatsApp</span>
+              </a>
             </div>
           </div>
+
+          {/* Quick Links */}
+          <div className="col-span-1">
+            <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/" className="text-gray-400 hover:text-blue-400 transition-colors">Home</Link>
+              </li>
+              <li>
+                <Link to="/find-water" className="text-gray-400 hover:text-blue-400 transition-colors">Find Water</Link>
+              </li>
+              <li>
+                <Link to="/volunteer" className="text-gray-400 hover:text-blue-400 transition-colors">Volunteer</Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-gray-400 hover:text-blue-400 transition-colors">About Us</Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-gray-400 hover:text-blue-400 transition-colors">Contact</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div className="col-span-1">
+            <h3 className="text-lg font-semibold mb-4 text-white">Resources</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/faq" className="text-gray-400 hover:text-blue-400 transition-colors">FAQ</Link>
+              </li>
+              <li>
+                <Link to="/conservation" className="text-gray-400 hover:text-blue-400 transition-colors">Water Conservation Tips</Link>
+              </li>
+              <li>
+                <Link to="/communities" className="text-gray-400 hover:text-blue-400 transition-colors">Community Stories</Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link to="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="col-span-1">
+            <h3 className="text-lg font-semibold mb-4 text-white">Contact Us</h3>
+            <address className="not-italic text-gray-400">
+              <p className="mb-2">Emfuleni Municipality Area</p>
+              <p className="mb-2">Gauteng, South Africa</p>
+              <p className="mb-2">
+                <a href="mailto:info@togetherasone.org.za" className="hover:text-blue-400 transition-colors">
+                  info@togetherasone.org.za
+                </a>
+              </p>
+              <p>
+                <a href="tel:+27123456789" className="hover:text-blue-400 transition-colors">
+                  +27 12 345 6789
+                </a>
+              </p>
+            </address>
+          </div>
         </div>
-        
-        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
-          <p>
-            This is not a municipal project. It's a community initiative built by a resident of Emfuleni, for the people of Emfuleni.
-          </p>
-          <p className="mt-2">
-            &copy; {new Date().getFullYear()} Emfuleni Water Help. All rights reserved.
-          </p>
+
+        <div className="border-t border-gray-800 mt-10 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-gray-500 mb-3 md:mb-0">
+              &copy; {currentYear} Together As One. All rights reserved. 
+              <span className="hidden md:inline"> | </span>
+              <span className="block md:inline">Developed with 💙 for South African communities.</span>
+            </p>
+            
+            <div className="flex items-center text-gray-500 text-sm hover:text-blue-400 transition-colors group">
+              <FaCode className="mr-2 text-blue-500 group-hover:text-blue-400" />
+              <span>Developed by </span>
+              <a 
+                href="https://mr-sn.netlify.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-medium ml-1 border-b border-transparent group-hover:border-blue-400 inline-flex items-center"
+              >
+                Siphamandla Ngcepe
+                <FaExternalLinkAlt className="ml-1 text-xs opacity-70" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

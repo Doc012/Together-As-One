@@ -1,61 +1,53 @@
-import { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
-export const LocationContext = createContext();
+// Create the context with default values
+export const LocationContext = createContext({
+  userLocation: null,
+  locationPermission: 'unknown',
+  setUserLocation: () => {},
+  requestLocationPermission: () => {}
+});
 
 export const LocationProvider = ({ children }) => {
   const [userLocation, setUserLocation] = useState(null);
-  const [locationPermission, setLocationPermission] = useState('prompt'); // 'prompt', 'granted', 'denied'
-  const [locationError, setLocationError] = useState(null);
+  const [locationPermission, setLocationPermission] = useState('unknown'); // 'granted', 'denied', 'unknown'
 
-  const requestLocation = () => {
+  // Function to request location permission and get coordinates
+  const requestLocationPermission = () => {
     if (!navigator.geolocation) {
-      setLocationError('Geolocation is not supported by your browser');
+      setLocationPermission('unsupported');
       return;
     }
-    
-    setLocationError(null);
-    
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setUserLocation({
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+          longitude: position.coords.longitude,
+          accuracy: position.coords.accuracy
         });
         setLocationPermission('granted');
       },
       (error) => {
-        console.error('Error getting location:', error);
+        console.warn("Error getting location:", error.message);
         setLocationPermission('denied');
-        
-        switch(error.code) {
-          case error.PERMISSION_DENIED:
-            setLocationError('Location permission was denied');
-            break;
-          case error.POSITION_UNAVAILABLE:
-            setLocationError('Location information is unavailable');
-            break;
-          case error.TIMEOUT:
-            setLocationError('Location request timed out');
-            break;
-          default:
-            setLocationError('An unknown error occurred');
-        }
       },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 0
-      }
+      { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
     );
   };
+
+  // Request location on component mount
+  useEffect(() => {
+    requestLocationPermission();
+  }, []);
 
   return (
     <LocationContext.Provider 
       value={{ 
         userLocation, 
-        locationPermission,
-        locationError,
-        requestLocation
+        locationPermission, 
+        setUserLocation,
+        requestLocationPermission 
       }}
     >
       {children}

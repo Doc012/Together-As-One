@@ -1,40 +1,42 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LocationProvider } from './contexts/LocationContext';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-// Layout components
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-
-// Pages
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import FindWaterPage from './pages/FindWaterPage';
 import VolunteerPage from './pages/VolunteerPage';
-import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import FAQPage from './pages/FAQPage';
+import WaterConservationPage from './pages/WaterConservationPage';
+import CommunitiesPage from './pages/CommunitiesPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-export default function App() {
+function App() {
   return (
-    <Router>
-      <LocationProvider>
-        <div className="flex flex-col min-h-screen bg-blue-50">
+    <LocationProvider>
+      <Router>
+        <div className="min-h-screen flex flex-col">
           <Header />
-          
-          <main className="flex-grow w-full py-8">
+          <main className="flex-grow pt-20">
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
               <Route path="/find-water" element={<FindWaterPage />} />
               <Route path="/volunteer" element={<VolunteerPage />} />
-              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/conservation" element={<WaterConservationPage />} />
+              <Route path="/communities" element={<CommunitiesPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
-          
           <Footer />
         </div>
-        <ToastContainer position="bottom-right" />
-      </LocationProvider>
-    </Router>
+      </Router>
+    </LocationProvider>
   );
 }
+
+export default App;

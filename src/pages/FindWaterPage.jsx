@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   FaMapMarkerAlt, FaClock, FaSearch, FaFilter, FaWater, 
   FaLocationArrow, FaHourglassHalf, FaSortAmountDown, 
-  FaTimes, FaListUl, FaMapMarked, FaDirections, FaChevronDown
+  FaTimes, FaListUl, FaMapMarked, FaDirections, FaChevronDown,
+  FaExclamationTriangle, FaInfoCircle
 } from 'react-icons/fa';
 import { LocationContext } from '../contexts/LocationContext';
 import { getAvailableWaterPoints } from '../data/waterPoints';
@@ -14,24 +16,24 @@ import MapView from '../components/features/MapView';
 // Sample areas data - in a real app this would come from an API
 const areasData = [
   { 
-    name: 'Vanderbijlpark', 
-    subAreas: ['Vanderbijlpark CE', 'Vanderbijlpark SE', 'Vanderbijlpark SW', 'Vanderbijlpark CW'] 
+    name: 'Johannesburg', 
+    subAreas: ['Sandton', 'Randburg', 'Rosebank', 'Midrand', 'Soweto'] 
   },
   { 
-    name: 'Vereeniging', 
-    subAreas: ['Three Rivers', 'Arcon Park', 'Peacehaven', 'Duncanville'] 
+    name: 'Pretoria', 
+    subAreas: ['Centurion', 'Hatfield', 'Menlyn', 'Sunnyside', 'Brooklyn'] 
   },
   { 
-    name: 'Sasolburg', 
-    subAreas: ['Sasolburg Central', 'Vaalpark', 'Roodia'] 
+    name: 'Cape Town', 
+    subAreas: ['Sea Point', 'Gardens', 'Camps Bay', 'Woodstock', 'Observatory'] 
   },
   { 
-    name: 'Evaton', 
-    subAreas: ['Evaton West', 'Evaton North', 'Evaton Central'] 
+    name: 'Durban', 
+    subAreas: ['Umhlanga', 'Berea', 'Morningside', 'Glenwood', 'Westville'] 
   },
   { 
-    name: 'Sebokeng', 
-    subAreas: ['Zone 6', 'Zone 7', 'Zone 10', 'Zone 12', 'Zone 14'] 
+    name: 'Port Elizabeth', 
+    subAreas: ['Summerstrand', 'Walmer', 'Mill Park', 'Humewood', 'Central'] 
   }
 ];
 
@@ -44,8 +46,10 @@ function debounce(func, wait) {
   };
 }
 
-export default function FindWaterPage() {
-  const { userLocation, locationPermission } = useContext(LocationContext);
+const FindWaterPage = () => {
+  // Use default values when destructuring to avoid the error
+  const { userLocation = null, locationPermission = 'unknown' } = useContext(LocationContext) || {};
+  
   const [waterPoints, setWaterPoints] = useState([]);
   const [filteredPoints, setFilteredPoints] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -84,27 +88,35 @@ export default function FindWaterPage() {
         { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
       );
     }
-  }, []);
-  
+  }, []); // Empty dependency array to run only once on mount
+
+  // Data fetching effect
   useEffect(() => {
-    // Simulate data fetch with a slight delay to show loading state
-    setIsLoading(true);
-    try {
-      setTimeout(() => {
-        const points = getAvailableWaterPoints();
-        if (!points || !Array.isArray(points)) {
-          throw new Error("Failed to load water points data");
-        }
-        setWaterPoints(points);
-        setFilteredPoints(points);
+    const fetchWaterPoints = async () => {
+      // Simulate data fetch with a slight delay to show loading state
+      setIsLoading(true);
+      try {
+        // Using setTimeout to simulate API call
+        const fetchData = () => {
+          const points = getAvailableWaterPoints();
+          if (!points || !Array.isArray(points)) {
+            throw new Error("Failed to load water points data");
+          }
+          setWaterPoints(points);
+          setFilteredPoints(points);
+          setIsLoading(false);
+        };
+        
+        setTimeout(fetchData, 800);
+      } catch (err) {
+        console.error("Error loading water points:", err);
+        setError("Failed to load water points. Please try again later.");
         setIsLoading(false);
-      }, 800);
-    } catch (err) {
-      console.error("Error loading water points:", err);
-      setError("Failed to load water points. Please try again later.");
-      setIsLoading(false);
-    }
-  }, []);
+      }
+    };
+    
+    fetchWaterPoints();
+  }, []); // Empty dependency array to run only once on mount
 
   useEffect(() => {
     if (waterPoints.length > 0) {
@@ -511,30 +523,70 @@ export default function FindWaterPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
-      {/* Hero Section with improved animation and visual appeal */}
-      <div className="relative bg-gradient-to-r from-indigo-600 via-purple-500 to-indigo-700 py-16 z-10 overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden opacity-20">
-          <div className="absolute -right-20 -top-20 w-72 h-72 bg-white rounded-full opacity-10 animate-float-slow"></div>
-          <div className="absolute left-10 bottom-10 w-48 h-48 bg-white rounded-full opacity-10 animate-float-medium"></div>
-          <div className="absolute right-1/4 top-1/2 w-32 h-32 bg-white rounded-full opacity-10 animate-float-fast"></div>
+      {/* Hero Section with light blue background */}
+      <div className="relative bg-blue-100 py-16 z-10 overflow-hidden">
+        {/* Advanced animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Large floating circle */}
+          <div className="absolute -right-20 -top-20 w-80 h-80 bg-blue-200/40 rounded-full 
+                          backdrop-blur-3xl transform-gpu animate-float-slow"></div>
+          
+          {/* Medium circle with glow effect */}
+          <div className="absolute left-10 bottom-10 w-56 h-56 bg-blue-300/30 rounded-full 
+                          backdrop-blur-2xl shadow-[0_0_40px_rgba(56,189,248,0.2)] 
+                          transform-gpu animate-float-reverse"></div>
+          
+          {/* Small pulsing circle */}
+          <div className="absolute right-1/4 top-1/2 w-32 h-32 bg-blue-300/20 rounded-full 
+                          backdrop-blur-xl shadow-[0_0_30px_rgba(59,130,246,0.3)] 
+                          transform-gpu animate-pulse-slow"></div>
+          
+          {/* Tiny floating dots */}
+          <div className="absolute left-1/4 top-1/3 w-6 h-6 bg-blue-400/30 rounded-full 
+                          transform-gpu animate-ping-slow"></div>
+          <div className="absolute right-1/3 bottom-1/4 w-4 h-4 bg-blue-500/20 rounded-full 
+                          transform-gpu animate-ping-slow animation-delay-1000"></div>
+          
+          {/* Gradient blob */}
+          <div className="absolute left-1/2 top-10 w-64 h-64 
+                          bg-gradient-to-br from-blue-300/30 to-blue-200/20 
+                          rounded-full blur-3xl opacity-40 
+                          transform-gpu animate-morph"></div>
+          
+          {/* Subtle moving lines */}
+          <div className="absolute left-0 top-1/4 w-full h-px bg-gradient-to-r 
+                          from-transparent via-blue-400/40 to-transparent 
+                          transform-gpu animate-scan-slow"></div>
+          <div className="absolute left-0 top-2/3 w-full h-px bg-gradient-to-r 
+                          from-transparent via-blue-500/30 to-transparent 
+                          transform-gpu animate-scan-slow animation-delay-2000"></div>
+          
+          {/* Glowing accent */}
+          <div className="absolute right-10 top-10 w-2 h-20 bg-blue-500/30 rounded-full 
+                          blur-md transform-gpu animate-glow"></div>
+          
+          {/* Glass panel effect */}
+          <div className="absolute left-1/3 bottom-20 w-40 h-40 
+                          bg-gradient-to-tr from-white/10 to-blue-200/20 
+                          rounded-lg backdrop-blur-lg border border-white/20 rotate-12 
+                          transform-gpu animate-float-subtle"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center text-white mb-10">
+          <div className="text-center text-gray-800 mb-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Find Water Near You</h1>
-            <p className="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-              Locate nearby homes with boreholes that are volunteering to share water during the outage.
+            <p className="text-lg md:text-xl text-blue-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
+              Locate nearby water sharing points across South Africa during water shortages.
             </p>
           </div>
           
           {/* Search Bar with enhanced design */}
-          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden animate-fade-in-up animation-delay-400 transform hover:scale-[1.01] transition-all duration-300">
+          <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-md rounded-xl shadow-xl overflow-hidden animate-fade-in-up animation-delay-400 transform hover:scale-[1.01] transition-all duration-300">
             <div className="p-5">
               <SearchBar 
                 searchTerm={searchTerm} 
                 onSearch={handleSearch} 
-                placeholder="Search by area, street name, or location..."
+                placeholder="Search by city, suburb, or street name..."
                 autoFocus={false}
                 className="transition-all duration-300"
               />
@@ -542,14 +594,6 @@ export default function FindWaterPage() {
           </div>
         </div>
         
-        {/* Enhanced wave decoration with better animation */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 overflow-hidden">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-24 text-gray-50 fill-current animate-wave">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-          </svg>
-        </div>
       </div>
 
       {/* Main Content Area - Restructured layout for desktop */}
@@ -576,7 +620,7 @@ export default function FindWaterPage() {
         {/* Mobile Filter Toggle */}
         <div className="lg:hidden mb-6">
           <button
-            className="w-full flex items-center justify-between bg-white p-4 rounded-xl shadow-sm text-gray-700 hover:text-indigo-600 transition-colors"
+            className="w-full flex items-center justify-between bg-white p-4 rounded-xl shadow-sm text-gray-700 hover:text-blue-600 transition-colors"
             onClick={toggleFilterPanel}
           >
             <div className="flex items-center">
@@ -588,7 +632,7 @@ export default function FindWaterPage() {
                 v !== 10 && 
                 (Array.isArray(v) ? v.length > 0 : true)
               ) && (
-                <span className="ml-2 bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                <span className="ml-2 bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded-full">
                   {Object.values(activeFilters).filter(v => 
                     v !== null && 
                     v !== false && 
@@ -602,6 +646,20 @@ export default function FindWaterPage() {
           </button>
         </div>
         
+        {/* Pro tip alert - NEW SECTION */}
+        <div className="mb-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <FaInfoCircle className="h-5 w-5 text-blue-500" />
+            </div>
+            <div className="ml-3">
+              <p className="text-sm text-blue-700">
+                <span className="font-bold">Pro tip:</span> Allow location access for the most accurate results, or use the search to find water points in specific areas.
+              </p>
+            </div>
+          </div>
+        </div>
+        
         {/* Control bar with enhanced styling */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-6 bg-white p-4 rounded-xl shadow-sm">
           <div className="flex items-center mb-4 sm:mb-0 w-full sm:w-auto">
@@ -609,7 +667,7 @@ export default function FindWaterPage() {
             <h2 className="text-lg font-semibold text-gray-800">
               {isLoading ? (
                 <span className="flex items-center">
-                  <svg className="animate-spin h-4 w-4 mr-2 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin h-4 w-4 mr-2 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
@@ -617,7 +675,7 @@ export default function FindWaterPage() {
                 </span>
               ) : (
                 <span className="flex items-center">
-                  <span className="text-indigo-600 font-bold mr-1">{filteredPoints.length}</span> 
+                  <span className="text-blue-600 font-bold mr-1">{filteredPoints.length}</span> 
                   {filteredPoints.length === 1 ? 'Location' : 'Locations'} Found
                 </span>
               )}
@@ -629,7 +687,7 @@ export default function FindWaterPage() {
             <button
               className={`px-4 py-2 text-sm flex items-center transition-all duration-200 ${
                 viewMode === 'list' 
-                  ? 'bg-indigo-600 text-white font-medium' 
+                  ? 'bg-blue-600 text-white font-medium' 
                   : 'bg-white text-gray-700 hover:bg-gray-50'
               }`}
               onClick={() => setViewMode('list')}
@@ -640,7 +698,7 @@ export default function FindWaterPage() {
             <button
               className={`px-4 py-2 text-sm flex items-center transition-all duration-200 ${
                 viewMode === 'map' 
-                  ? 'bg-indigo-600 text-white font-medium' 
+                  ? 'bg-blue-600 text-white font-medium' 
                   : 'bg-white text-gray-700 hover:bg-gray-50'
               }`}
               onClick={() => setViewMode('map')}
@@ -670,8 +728,8 @@ export default function FindWaterPage() {
           isLoading ? (
             <div className="bg-white rounded-xl shadow-md p-12 text-center">
               <div className="relative h-16 w-16 mx-auto mb-4">
-                <div className="absolute inset-0 rounded-full border-t-2 border-r-2 border-indigo-600 animate-spin"></div>
-                <div className="absolute inset-3 text-indigo-600">
+                <div className="absolute inset-0 rounded-full border-t-2 border-r-2 border-blue-600 animate-spin"></div>
+                <div className="absolute inset-3 text-blue-600">
                   <FaWater className="h-full w-full animate-pulse" />
                 </div>
               </div>
@@ -698,8 +756,8 @@ export default function FindWaterPage() {
             </div>
           ) : (
             <div className="bg-white rounded-xl shadow-md p-10 text-center animate-fade-in">
-              <div className="bg-indigo-50 rounded-full h-20 w-20 flex items-center justify-center mx-auto mb-6">
-                <FaSearch className="text-indigo-400 text-3xl" />
+              <div className="bg-blue-50 rounded-full h-20 w-20 flex items-center justify-center mx-auto mb-6">
+                <FaSearch className="text-blue-400 text-3xl" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-3">No Water Points Found</h3>
               <p className="text-gray-600 mb-6 max-w-md mx-auto">
@@ -708,7 +766,7 @@ export default function FindWaterPage() {
               
               <button 
                 onClick={resetFilters}
-                className="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all"
+                className="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
@@ -760,7 +818,7 @@ export default function FindWaterPage() {
                       onClick={() => paginate(number)}
                       className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
                         currentPage === number
-                          ? 'z-10 bg-indigo-50 border-indigo-500 text-indigo-600'
+                          ? 'z-10 bg-blue-50 border-blue-500 text-blue-600'
                           : 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50'
                       }`}
                     >
@@ -840,6 +898,77 @@ export default function FindWaterPage() {
             </nav>
           </div>
         )}
+        
+        {/* Information blocks - NEW SECTION */}
+        <div className="grid md:grid-cols-2 gap-8 mt-12">
+          <div className="bg-white rounded-xl p-6 shadow-md">
+            <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+              <FaWater className="text-blue-500 mr-2" />
+              Water Point Types
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Our platform connects you with various types of water resources across South Africa:
+            </p>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <div className="bg-blue-100 p-1 rounded-full mt-1.5 mr-3">
+                  <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700"><strong>Private Boreholes</strong> - Households sharing their borehole water</span>
+              </li>
+              <li className="flex items-start">
+                <div className="bg-blue-100 p-1 rounded-full mt-1.5 mr-3">
+                  <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700"><strong>JoJo Tanks</strong> - Stored water collection systems</span>
+              </li>
+              <li className="flex items-start">
+                <div className="bg-blue-100 p-1 rounded-full mt-1.5 mr-3">
+                  <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700"><strong>Community Points</strong> - Public spaces offering water collection</span>
+              </li>
+              <li className="flex items-start">
+                <div className="bg-blue-100 p-1 rounded-full mt-1.5 mr-3">
+                  <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <span className="text-gray-700"><strong>Municipal Relief Points</strong> - Official water provision stations</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="bg-white rounded-xl p-6 shadow-md">
+            <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+              <FaMapMarkerAlt className="text-blue-500 mr-2" />
+              How To Use This Page
+            </h3>
+            <ol className="space-y-3 list-decimal list-inside text-gray-700">
+              <li className="mb-2">
+                <span className="font-medium">Enable location</span> - Allow your browser to access your location for the most accurate results
+              </li>
+              <li className="mb-2">
+                <span className="font-medium">Use filters</span> - Narrow down results by distance, availability times, or specific areas
+              </li>
+              <li className="mb-2">
+                <span className="font-medium">Switch views</span> - Toggle between list and map views to find water points easily
+              </li>
+              <li className="mb-2">
+                <span className="font-medium">View details</span> - Click on any water point to see more information and get directions
+              </li>
+              <li>
+                <span className="font-medium">Register to share</span> - If you have water to share, consider <Link to="/volunteer" className="text-blue-600 hover:underline">registering as a provider</Link>
+              </li>
+            </ol>
+          </div>
+        </div>
       </div>
       
       {/* Mobile Filter Panel - Slide Up Panel */}
@@ -848,7 +977,7 @@ export default function FindWaterPage() {
           <div className="fixed inset-x-0 bottom-0 bg-white rounded-t-xl max-h-[90%] overflow-y-auto animate-slide-up">
             <div className="sticky top-0 bg-white px-4 py-4 border-b flex justify-between items-center">
               <h3 className="font-semibold text-gray-800 flex items-center">
-                <FaFilter className="text-indigo-500 mr-2" />
+                <FaFilter className="text-blue-500 mr-2" />
                 Filters
               </h3>
               <button 
@@ -866,8 +995,8 @@ export default function FindWaterPage() {
               v !== 10 && 
               (Array.isArray(v) ? v.length > 0 : true)
             ) && (
-              <div className="px-4 py-2 bg-indigo-50 border-b border-indigo-100">
-                <p className="text-sm text-indigo-700 flex items-center">
+              <div className="px-4 py-2 bg-blue-50 border-b border-blue-100">
+                <p className="text-sm text-blue-700 flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -905,10 +1034,10 @@ export default function FindWaterPage() {
                 </button>
                 <button
                   onClick={toggleFilterPanel}
-                  className="flex-1 bg-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-indigo-700 transition-colors flex items-center justify-center"
+                  className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center"
                 >
                   <span>Show</span>
-                  <span className="inline-flex items-center justify-center bg-white text-indigo-600 rounded-full h-6 w-6 mx-2 text-sm font-bold">
+                  <span className="inline-flex items-center justify-center bg-white text-blue-600 rounded-full h-6 w-6 mx-2 text-sm font-bold">
                     {filteredPoints.length}
                   </span>
                   <span>Results</span>
@@ -955,15 +1084,15 @@ export default function FindWaterPage() {
                     </div>
                   )}
                   
-                  <div className="bg-indigo-50 rounded-xl p-5 border border-indigo-100">
-                    <h3 className="text-lg font-semibold text-indigo-800 mb-3 flex items-center">
-                      <FaMapMarkerAlt className="text-indigo-500 mr-2" />
+                  <div className="bg-blue-50 rounded-xl p-5 border border-blue-100">
+                    <h3 className="text-lg font-semibold text-blue-800 mb-3 flex items-center">
+                      <FaMapMarkerAlt className="text-blue-500 mr-2" />
                       Location Details
                     </h3>
-                    <p className="text-indigo-900 font-medium mb-2">{selectedWaterPoint.area} - {selectedWaterPoint.subArea}</p>
+                    <p className="text-blue-900 font-medium mb-2">{selectedWaterPoint.area} - {selectedWaterPoint.subArea}</p>
                     <div className="flex items-start bg-white p-3 rounded-lg">
-                      <div className="bg-indigo-100 p-2 rounded-lg mr-3 flex-shrink-0">
-                        <FaMapMarkerAlt className="text-indigo-700" />
+                      <div className="bg-blue-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                        <FaMapMarkerAlt className="text-blue-700" />
                       </div>
                       <p className="text-gray-700">{selectedWaterPoint.address || "Address not provided"}</p>
                     </div>
@@ -1007,15 +1136,15 @@ export default function FindWaterPage() {
                                 <p className="text-blue-700 ml-9 font-bold">{times.walking}</p>
                               </div>
                               <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
-                                <div className="flex items-center text-indigo-800 font-medium mb-2">
-                                  <span className="inline-block bg-indigo-100 rounded-full p-2 mr-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <div className="flex items-center text-blue-800 font-medium mb-2">
+                                  <span className="inline-block bg-blue-100 rounded-full p-2 mr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h8a2 2 0 012 2v1M8 11h12m0 0l-4-4m4 4l-4 4" />
                                     </svg>
                                   </span>
                                   <span>Driving</span>
                                 </div>
-                                <p className="text-indigo-700 ml-9 font-bold">{times.driving}</p>
+                                <p className="text-blue-700 ml-9 font-bold">{times.driving}</p>
                               </div>
                             </>
                           );
@@ -1085,7 +1214,7 @@ export default function FindWaterPage() {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-indigo-700 flex items-center justify-center shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
+                    className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 flex items-center justify-center shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
                   >
                     <FaDirections className="mr-2 text-xl" />
                     Get Directions
@@ -1179,31 +1308,55 @@ export default function FindWaterPage() {
         }
         
         .animate-float-slow {
-          animation: float 8s ease-in-out infinite;
+          animation: float 20s ease-in-out infinite;
         }
         
-        .animate-float-medium {
-          animation: float 6s ease-in-out infinite;
+        .animate-float-reverse {
+          animation: floatReverse 15s ease-in-out infinite;
         }
         
-        .animate-float-fast {
-          animation: float 4s ease-in-out infinite;
+        .animate-pulse-slow {
+          animation: pulseSlow 6s ease-in-out infinite;
         }
         
-        .animate-wave {
-          animation: wave 12s linear infinite;
+        .animate-ping-slow {
+          animation: pingSlow 10s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
         
-        .animate-pulse-once {
-          animation: pulseOnce 0.5s ease-out forwards;
+        .animation-delay-1000 {
+          animation-delay: 1s;
         }
         
-        .animation-delay-200 {
-          animation-delay: 0.2s;
+        .animation-delay-2000 {
+          animation-delay: 2s;
         }
         
-        .animation-delay-400 {
-          animation-delay: 0.4s;
+        .animate-morph {
+          animation: morph 25s ease-in-out infinite;
+        }
+        
+        .animate-scan-slow {
+          animation: scan 15s ease-in-out infinite;
+        }
+        
+        .animate-glow {
+          animation: glow 4s ease-in-out infinite;
+        }
+        
+        .animate-float-subtle {
+          animation: floatSubtle 10s ease-in-out infinite;
+        }
+        
+        .animate-wave-slow {
+          animation: wave 20s linear infinite;
+        }
+        
+        .animate-wave-slower {
+          animation: wave 25s linear infinite;
+        }
+        
+        .animate-wave-slow-reverse {
+          animation: waveReverse 22s linear infinite;
         }
         
         @keyframes fadeIn {
@@ -1222,20 +1375,62 @@ export default function FindWaterPage() {
         }
         
         @keyframes float {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          50% { transform: translateY(-15px) translateX(15px); }
+          0%, 100% { transform: translateY(0) translateX(0) rotate(0); }
+          25% { transform: translateY(-20px) translateX(10px) rotate(2deg); }
+          50% { transform: translateY(-15px) translateX(15px) rotate(0); }
+          75% { transform: translateY(-25px) translateX(5px) rotate(-2deg); }
+        }
+        
+        @keyframes floatReverse {
+          0%, 100% { transform: translateY(0) translateX(0) rotate(0); }
+          25% { transform: translateY(15px) translateX(-10px) rotate(-1deg); }
+          50% { transform: translateY(20px) translateX(-15px) rotate(0); }
+          75% { transform: translateY(10px) translateX(-5px) rotate(1deg); }
+        }
+        
+        @keyframes pulseSlow {
+          0%, 100% { transform: scale(1); opacity: 0.7; }
+          50% { transform: scale(1.1); opacity: 0.9; }
+        }
+        
+        @keyframes pingSlow {
+          0% { transform: scale(0.8); opacity: 0.8; }
+          50% { transform: scale(1.5); opacity: 0.2; }
+          100% { transform: scale(0.8); opacity: 0.8; }
+        }
+        
+        @keyframes morph {
+          0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+          25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+          50% { border-radius: 50% 60% 30% 40% / 40% 30% 70% 60%; }
+          75% { border-radius: 40% 60% 50% 70% / 60% 70% 40% 30%; }
+        }
+        
+        @keyframes scan {
+          0%, 100% { transform: translateX(-100%); opacity: 0; }
+          50% { transform: translateX(100%); opacity: 1; }
+        }
+        
+        @keyframes glow {
+          0%, 100% { opacity: 0.4; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+          50% { opacity: 0.8; box-shadow: 0 0 30px rgba(59, 130, 246, 0.8); }
+        }
+        
+        @keyframes floatSubtle {
+          0%, 100% { transform: translateY(0) rotate(12deg); }
+          50% { transform: translateY(-10px) rotate(14deg); }
         }
         
         @keyframes wave {
-          0% { transform: translateX(0) translateY(5px); }
-          50% { transform: translateX(-2%) translateY(0); }
-          100% { transform: translateX(0) translateY(5px); }
+          0% { transform: translateX(0) translateY(3px); }
+          50% { transform: translateX(-1%) translateY(0); }
+          100% { transform: translateX(0) translateY(3px); }
         }
         
-        @keyframes pulseOnce {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.2); }
-          100% { transform: scale(1); }
+        @keyframes waveReverse {
+          0% { transform: translateX(0) translateY(0); }
+          50% { transform: translateX(1%) translateY(3px); }
+          100% { transform: translateX(0) translateY(0); }
         }
         
         /* Mobile optimizations */
@@ -1248,3 +1443,5 @@ export default function FindWaterPage() {
     </div>
   );
 };
+
+export default FindWaterPage;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaWater, FaUsers, FaQuestion, FaEnvelope } from 'react-icons/fa';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -108,6 +108,33 @@ export default function Header() {
             }>
               Volunteer
             </NavLink>
+            <NavLink to="/communities" className={({isActive}) => 
+              `px-4 py-2 rounded-md transition-all ${
+                isActive 
+                  ? 'font-medium text-blue-700 bg-blue-50' 
+                  : 'text-gray-800 hover:text-blue-700 hover:bg-blue-50'
+              }`
+            }>
+              Communities
+            </NavLink>
+            <NavLink to="/conservation" className={({isActive}) => 
+              `px-4 py-2 rounded-md transition-all ${
+                isActive 
+                  ? 'font-medium text-blue-700 bg-blue-50' 
+                  : 'text-gray-800 hover:text-blue-700 hover:bg-blue-50'
+              }`
+            }>
+              Water Tips
+            </NavLink>
+            <NavLink to="/faq" className={({isActive}) => 
+              `px-4 py-2 rounded-md transition-all ${
+                isActive 
+                  ? 'font-medium text-blue-700 bg-blue-50' 
+                  : 'text-gray-800 hover:text-blue-700 hover:bg-blue-50'
+              }`
+            }>
+              FAQ
+            </NavLink>
             <NavLink to="/about" className={({isActive}) => 
               `px-4 py-2 rounded-md transition-all ${
                 isActive 
@@ -116,6 +143,15 @@ export default function Header() {
               }`
             }>
               About
+            </NavLink>
+            <NavLink to="/contact" className={({isActive}) => 
+              `px-4 py-2 rounded-md transition-all ${
+                isActive 
+                  ? 'font-medium text-blue-700 bg-blue-50' 
+                  : 'text-gray-800 hover:text-blue-700 hover:bg-blue-50'
+              }`
+            }>
+              Contact
             </NavLink>
           </nav>
         </div>
@@ -161,6 +197,51 @@ export default function Header() {
                 Volunteer
               </NavLink>
               <NavLink 
+                to="/communities" 
+                className={({isActive}) => 
+                  `block py-3 px-4 rounded-md transition-colors ${
+                    isActive 
+                      ? 'bg-blue-50 text-blue-700 font-medium' 
+                      : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700'
+                  }`
+                }
+              >
+                <div className="flex items-center">
+                  <FaUsers className="mr-2" />
+                  Communities
+                </div>
+              </NavLink>
+              <NavLink 
+                to="/conservation" 
+                className={({isActive}) => 
+                  `block py-3 px-4 rounded-md transition-colors ${
+                    isActive 
+                      ? 'bg-blue-50 text-blue-700 font-medium' 
+                      : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700'
+                  }`
+                }
+              >
+                <div className="flex items-center">
+                  <FaWater className="mr-2" />
+                  Water Tips
+                </div>
+              </NavLink>
+              <NavLink 
+                to="/faq" 
+                className={({isActive}) => 
+                  `block py-3 px-4 rounded-md transition-colors ${
+                    isActive 
+                      ? 'bg-blue-50 text-blue-700 font-medium' 
+                      : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700'
+                  }`
+                }
+              >
+                <div className="flex items-center">
+                  <FaQuestion className="mr-2" />
+                  FAQ
+                </div>
+              </NavLink>
+              <NavLink 
                 to="/about" 
                 className={({isActive}) => 
                   `block py-3 px-4 rounded-md transition-colors ${
@@ -171,6 +252,21 @@ export default function Header() {
                 }
               >
                 About
+              </NavLink>
+              <NavLink 
+                to="/contact" 
+                className={({isActive}) => 
+                  `block py-3 px-4 rounded-md transition-colors ${
+                    isActive 
+                      ? 'bg-blue-50 text-blue-700 font-medium' 
+                      : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700'
+                  }`
+                }
+              >
+                <div className="flex items-center">
+                  <FaEnvelope className="mr-2" />
+                  Contact
+                </div>
               </NavLink>
             </nav>
           </div>

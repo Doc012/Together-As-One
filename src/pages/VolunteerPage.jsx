@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { FaCheckCircle, FaWater, FaMapMarkerAlt, FaClock, FaList, FaPhoneAlt, FaEnvelope, FaExclamationCircle, FaCopy, FaDownload } from 'react-icons/fa';
+import { FaCheckCircle, FaWater, FaMapMarkerAlt, FaClock, FaList, FaPhoneAlt, FaEnvelope, FaExclamationCircle, FaCopy, FaDownload, FaHandHoldingWater } from 'react-icons/fa';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const VolunteerPage = () => {
@@ -200,130 +200,231 @@ ${emailContent}
           <meta name="description" content="Volunteer to share your borehole water with your community during the Emfuleni water crisis." />
         </Helmet>
 
-        {/* Hero section */}
-        <div className="relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 py-16 z-10 overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden opacity-20">
-            <div className="absolute -right-20 -top-20 w-72 h-72 bg-white rounded-full opacity-10 animate-float-slow"></div>
-            <div className="absolute left-10 bottom-10 w-48 h-48 bg-white rounded-full opacity-10 animate-float-medium"></div>
-            <div className="absolute right-1/4 top-1/2 w-32 h-32 bg-white rounded-full opacity-10 animate-float-fast"></div>
+        {/* Enhanced Hero section with animated background elements */}
+        <div className="relative bg-blue-100 py-16 z-10 overflow-hidden">
+          {/* Advanced animated background elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Large floating circle */}
+            <div className="absolute -right-20 -top-20 w-80 h-80 bg-blue-200/40 rounded-full 
+                          backdrop-blur-3xl transform-gpu animate-float-slow"></div>
+            
+            {/* Medium circle with glow effect */}
+            <div className="absolute left-10 bottom-10 w-56 h-56 bg-blue-300/30 rounded-full 
+                          backdrop-blur-2xl shadow-[0_0_40px_rgba(56,189,248,0.2)] 
+                          transform-gpu animate-float-reverse"></div>
+            
+            {/* Small pulsing circle */}
+            <div className="absolute right-1/4 top-1/2 w-32 h-32 bg-blue-300/20 rounded-full 
+                          backdrop-blur-xl shadow-[0_0_30px_rgba(59,130,246,0.3)] 
+                          transform-gpu animate-pulse-slow"></div>
+            
+            {/* Tiny floating dots */}
+            <div className="absolute left-1/4 top-1/3 w-6 h-6 bg-blue-400/30 rounded-full 
+                          transform-gpu animate-ping-slow"></div>
+            <div className="absolute right-1/3 bottom-1/4 w-4 h-4 bg-blue-500/20 rounded-full 
+                          transform-gpu animate-ping-slow animation-delay-1000"></div>
+            
+            {/* Gradient blob */}
+            <div className="absolute left-1/2 top-10 w-64 h-64 
+                          bg-gradient-to-br from-blue-300/30 to-blue-200/20 
+                          rounded-full blur-3xl opacity-40 
+                          transform-gpu animate-morph"></div>
+            
+            {/* Subtle moving lines */}
+            <div className="absolute left-0 top-1/4 w-full h-px bg-gradient-to-r 
+                          from-transparent via-blue-400/40 to-transparent 
+                          transform-gpu animate-scan-slow"></div>
+            <div className="absolute left-0 top-2/3 w-full h-px bg-gradient-to-r 
+                          from-transparent via-blue-500/30 to-transparent 
+                          transform-gpu animate-scan-slow animation-delay-2000"></div>
+            
+            {/* Glowing accent */}
+            <div className="absolute right-10 top-10 w-2 h-20 bg-blue-500/30 rounded-full 
+                          blur-md transform-gpu animate-glow"></div>
+            
+            {/* Glass panel effect */}
+            <div className="absolute left-1/3 bottom-20 w-40 h-40 
+                          bg-gradient-to-tr from-white/10 to-blue-200/20 
+                          rounded-lg backdrop-blur-lg border border-white/20 rotate-12 
+                          transform-gpu animate-float-subtle"></div>
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div className="text-center text-white mb-10">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Volunteer Your Water</h1>
-              <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-                Share your borehole water with your community during the Emfuleni water crisis
+            <div className="text-center text-gray-800 mb-10">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Share Your Water</h1>
+              <p className="text-lg md:text-xl text-blue-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
+                Help your community during the water crisis by registering your borehole or water source
               </p>
             </div>
-          </div>
-          
-          {/* Wave decoration */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 overflow-hidden">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute bottom-0 left-0 w-full h-24 text-gray-50 fill-current animate-wave">
-              <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-              <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-              <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-            </svg>
+            
+            {/* Search Bar with enhanced design */}
+            <div className="max-w-3xl mx-auto bg-white/90 backdrop-blur-md rounded-xl shadow-xl overflow-hidden animate-fade-in-up animation-delay-400 transform hover:scale-[1.01] transition-all duration-300">
+              <div className="p-5 text-center">
+                <p className="text-gray-600">Complete the form below to register your water source</p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Main content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-10 relative z-20">
+          {/* Introduction Card */}
+          <div className="bg-white rounded-xl shadow-xl p-6 mb-10 transform hover:scale-[1.01] transition-all duration-300">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <div className="bg-gradient-to-r from-teal-500 to-blue-500 p-2 rounded-lg mr-3 text-white">
+                  <FaWater className="h-5 w-5" />
+                </div>
+                Why Volunteer Your Water?
+              </h2>
+              <p className="text-gray-600 mb-6">
+                During the water crisis, many of our neighbors don't have access to clean water. By sharing your borehole or water source, you become a vital lifeline for your community.
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <div className="bg-blue-50 rounded-lg p-4 border border-blue-100 transform hover:translate-y-[-5px] transition-all duration-300">
+                  <div className="flex items-center mb-2">
+                    <div className="bg-blue-100 rounded-full p-2 mr-2">
+                      <FaCheckCircle className="text-blue-600" />
+                    </div>
+                    <h3 className="font-semibold text-blue-900">Help Your Community</h3>
+                  </div>
+                  <p className="text-blue-800 text-sm">Provide essential support to neighbors, elderly, and families in need.</p>
+                </div>
+                
+                <div className="bg-teal-50 rounded-lg p-4 border border-teal-100 transform hover:translate-y-[-5px] transition-all duration-300">
+                  <div className="flex items-center mb-2">
+                    <div className="bg-teal-100 rounded-full p-2 mr-2">
+                      <FaClock className="text-teal-600" />
+                    </div>
+                    <h3 className="font-semibold text-teal-900">On Your Schedule</h3>
+                  </div>
+                  <p className="text-teal-800 text-sm">Set your own availability times that work with your daily routine.</p>
+                </div>
+                
+                <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-100 transform hover:translate-y-[-5px] transition-all duration-300">
+                  <div className="flex items-center mb-2">
+                    <div className="bg-indigo-100 rounded-full p-2 mr-2">
+                      <FaMapMarkerAlt className="text-indigo-600" />
+                    </div>
+                    <h3 className="font-semibold text-indigo-900">Be on the Map</h3>
+                  </div>
+                  <p className="text-indigo-800 text-sm">Your water point will be listed on our map to help people find you.</p>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-5 rounded-lg border border-blue-100">
+                <h3 className="font-semibold text-blue-800 mb-2 flex items-center">
+                  <FaExclamationCircle className="text-blue-600 mr-2" />
+                  How the Process Works
+                </h3>
+                <ol className="space-y-2 mt-3">
+                  <li className="flex items-center">
+                    <span className="bg-blue-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center mr-2">1</span>
+                    <p className="text-blue-900">Fill out the form with your information and availability</p>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="bg-blue-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center mr-2">2</span>
+                    <p className="text-blue-900">Send your details via email (with a photo of your water point)</p>
+                  </li>
+                  <li className="flex items-center">
+                    <span className="bg-blue-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center mr-2">3</span>
+                    <p className="text-blue-900">We'll review and add you to our map within 24-48 hours</p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          
           <div className="grid md:grid-cols-12 gap-8">
             {/* Information column */}
             <div className="md:col-span-5 lg:col-span-4">
               <div className="bg-white rounded-xl shadow-md p-6 mb-6 animate-fade-in">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                  <FaWater className="text-blue-500 mr-2" />
-                  Why Volunteer?
+                  <div className="bg-gradient-to-r from-blue-500 to-indigo-500 p-2 rounded-lg mr-3 text-white">
+                    <FaList className="h-5 w-5" />
+                  </div>
+                  Required Information
                 </h2>
-                <p className="text-gray-600 mb-4">
-                  By volunteering your borehole water, you're providing an essential service to your community during the Emfuleni water crisis. Your contribution can help neighbors, the elderly, and families who don't have access to alternative water sources.
-                </p>
-                <div className="space-y-3 mt-6">
-                  <div className="flex items-start">
-                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                    <p className="ml-2 text-gray-700">Support your local community</p>
+                
+                <div className="space-y-4 mt-6">
+                  <div className="bg-blue-50 rounded-lg p-4 flex items-start">
+                    <div className="bg-blue-100 p-1.5 rounded-lg mr-3 flex-shrink-0">
+                      <FaMapMarkerAlt className="text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-blue-900 mb-1">Location Details</h3>
+                      <p className="text-blue-800 text-sm">Your area, neighborhood, and address to display on the map</p>
+                    </div>
                   </div>
-                  <div className="flex items-start">
-                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                    <p className="ml-2 text-gray-700">Help those without access to water</p>
+                  
+                  <div className="bg-blue-50 rounded-lg p-4 flex items-start">
+                    <div className="bg-blue-100 p-1.5 rounded-lg mr-3 flex-shrink-0">
+                      <FaWater className="text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-blue-900 mb-1">Water Source</h3>
+                      <p className="text-blue-800 text-sm">Brief description of your water source (borehole, tank, etc.)</p>
+                    </div>
                   </div>
-                  <div className="flex items-start">
-                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                    <p className="ml-2 text-gray-700">Be listed on our water finder map</p>
+                  
+                  <div className="bg-blue-50 rounded-lg p-4 flex items-start">
+                    <div className="bg-blue-100 p-1.5 rounded-lg mr-3 flex-shrink-0">
+                      <FaClock className="text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-blue-900 mb-1">Availability</h3>
+                      <p className="text-blue-800 text-sm">Days and times when people can collect water</p>
+                    </div>
                   </div>
-                  <div className="flex items-start">
-                    <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                    <p className="ml-2 text-gray-700">Control your availability schedule</p>
+                  
+                  <div className="bg-blue-50 rounded-lg p-4 flex items-start">
+                    <div className="bg-blue-100 p-1.5 rounded-lg mr-3 flex-shrink-0">
+                      <FaPhoneAlt className="text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-blue-900 mb-1">Contact</h3>
+                      <p className="text-blue-800 text-sm">Phone and email for verification (not publicly displayed)</p>
+                    </div>
+                  </div>
+                  
+                  {/* Photo requirement - highlighted */}
+                  <div className="bg-red-50 rounded-lg p-4 flex items-start border-2 border-red-200 animate-pulse-once">
+                    <div className="bg-red-100 p-1.5 rounded-lg mr-3 flex-shrink-0">
+                      <FaExclamationCircle className="text-red-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-red-900 mb-1">Photo Required</h3>
+                      <p className="text-red-800 text-sm">A clear image of your property/water point (to be attached to your email)</p>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div className="bg-white rounded-xl shadow-md p-6 mb-6 animate-fade-in animation-delay-200">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                  <FaList className="text-blue-500 mr-2" />
-                  Required Information
-                </h2>
-                <p className="text-gray-600 mb-4">
-                  When you volunteer, we'll need the following information to list your water point on our map:
-                </p>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start">
-                    <div className="bg-blue-100 p-1 rounded-full mr-2 flex-shrink-0">
-                      <FaMapMarkerAlt className="text-blue-600" />
-                    </div>
-                    <span><strong>Location details:</strong> Your area, neighborhood, and address</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-blue-100 p-1 rounded-full mr-2 flex-shrink-0">
-                      <FaWater className="text-blue-600" />
-                    </div>
-                    <span><strong>Description:</strong> Brief info about your water source</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-blue-100 p-1 rounded-full mr-2 flex-shrink-0">
-                      <FaClock className="text-blue-600" />
-                    </div>
-                    <span><strong>Availability:</strong> Days and times when people can collect water</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-blue-100 p-1 rounded-full mr-2 flex-shrink-0">
-                      <FaPhoneAlt className="text-blue-600" />
-                    </div>
-                    <span><strong>Contact:</strong> Phone number and email for verification (not publicly displayed)</span>
-                  </li>
-                  {/* Add photo requirement */}
-                  <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-2 flex-shrink-0">
-                      <FaExclamationCircle className="text-red-600" />
-                    </div>
-                    <span><strong>Photo:</strong> A clear image of your property/water point (to be attached to your email)</span>
-                  </li>
-                </ul>
-              </div>
-
+              
               <div className="bg-white rounded-xl shadow-md p-6 animate-fade-in animation-delay-400">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                  <FaExclamationCircle className="text-blue-500 mr-2" />
-                  How to Volunteer
+                  <div className="bg-gradient-to-r from-teal-500 to-green-500 p-2 rounded-lg mr-3 text-white">
+                    <FaEnvelope className="h-5 w-5" />
+                  </div>
+                  Submission Instructions
                 </h2>
-                <div className="bg-indigo-50 p-4 rounded-lg mb-4">
-                  <h3 className="text-indigo-800 font-semibold mb-2 flex items-center">
+                
+                <div className="bg-indigo-50 p-5 rounded-lg mb-5 border border-indigo-100">
+                  <h3 className="text-indigo-800 font-semibold mb-3 flex items-center">
                     <FaEnvelope className="text-indigo-600 mr-2" />
                     Send Your Information by Email
                   </h3>
-                  <p className="text-gray-700 text-sm mb-2">
-                    Fill out the form on this page, then send your information to:
+                  <p className="text-indigo-700 text-sm mb-2">
+                    Fill out the form, then send your information to:
                   </p>
-                  <div className="bg-white p-2 rounded border border-indigo-200 flex items-center justify-between">
+                  <div className="bg-white p-3 rounded-lg border border-indigo-200 flex items-center justify-between">
                     <span className="font-medium text-indigo-700">{contactEmail}</span>
                     <button 
                       onClick={() => {
                         navigator.clipboard.writeText(contactEmail);
                         alert("Email copied to clipboard!");
                       }}
-                      className="text-indigo-600 hover:text-indigo-800 p-1"
+                      className="text-indigo-600 hover:text-indigo-800 p-1.5 bg-indigo-50 rounded-md hover:bg-indigo-100 transition-colors duration-200"
                       title="Copy email address"
                     >
                       <FaCopy />
@@ -331,50 +432,71 @@ ${emailContent}
                   </div>
                 </div>
                 
-                <ol className="space-y-4 mt-4">
-                  <li className="bg-blue-50 p-3 rounded-lg flex">
-                    <span className="bg-blue-600 text-white rounded-full h-6 w-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
-                    <div>
-                      <p className="text-blue-800 font-medium">Fill the form completely</p>
-                      <p className="text-gray-700 text-sm mt-1">
-                        Enter all your information in the form to the right.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="bg-blue-50 p-3 rounded-lg flex">
-                    <span className="bg-blue-600 text-white rounded-full h-6 w-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
-                    <div>
-                      <p className="text-blue-800 font-medium">Click "Generate Email"</p>
-                      <p className="text-gray-700 text-sm mt-1">
-                        Once complete, click the button to automatically generate an email with your information.
-                      </p>
-                    </div>
-                  </li>
-                  <li className="bg-blue-50 p-3 rounded-lg flex">
-                    <span className="bg-blue-600 text-white rounded-full h-6 w-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
-                    <div>
-                      <p className="text-blue-800 font-medium">Attach photo and send the email</p>
-                      <p className="text-gray-700 text-sm mt-1">
-                        Your default email client will open with your information pre-filled. Attach a photo of your property/water point and send the email.
-                      </p>
-                    </div>
-                  </li>
-                </ol>
+                <div className="mt-6">
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <h3 className="font-semibold text-blue-800 mb-2">After You Submit:</h3>
+                    <p className="text-blue-700 text-sm mb-3">
+                      After receiving your email, our team will:
+                    </p>
+                    <ul className="space-y-2">
+                      <li className="flex items-start">
+                        <div className="bg-blue-100 p-1 rounded-full mt-0.5 mr-2 flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-blue-800 text-sm">Review your information for completeness</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="bg-blue-100 p-1 rounded-full mt-0.5 mr-2 flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-blue-800 text-sm">May contact you to verify details</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="bg-blue-100 p-1 rounded-full mt-0.5 mr-2 flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-blue-800 text-sm">Add your water point to our map (within 24-48 hours)</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="bg-blue-100 p-1 rounded-full mt-0.5 mr-2 flex-shrink-0">
+                          <svg className="w-3 h-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-blue-800 text-sm">Send a confirmation email when your listing goes live</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
             
             {/* Form column */}
             <div className="md:col-span-7 lg:col-span-8">
-              <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 animate-fade-in">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Volunteer Registration Form</h2>
+              <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 animate-fade-in transform hover:scale-[1.01] transition-all duration-300">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                  <div className="bg-gradient-to-r from-blue-500 to-teal-500 p-2 rounded-lg mr-3 text-white">
+                    <FaWater className="h-5 w-5" />
+                  </div>
+                  Volunteer Registration Form
+                </h2>
                 
                 <div className="space-y-6">
                   {/* Basic Information */}
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b">Basic Information</h3>
+                    <h3 className="flex items-center text-lg font-semibold text-gray-800 mb-4 pb-2 border-b">
+                      <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">1</span>
+                      Basic Information
+                    </h3>
                     <div className="grid gap-6 mb-6 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      <div className="space-y-2">
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                           Water Point Name or Title*
                         </label>
                         <input
@@ -382,15 +504,15 @@ ${emailContent}
                           id="name"
                           name="name"
                           required
-                          placeholder="e.g., Smith Family Borehole, Three Rivers Water Station"
+                          placeholder="e.g., Smith Family Borehole"
                           value={formData.name}
                           onChange={handleChange}
-                          className="block w-full rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3"
+                          className="block w-full rounded-lg border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4"
                         />
                         <p className="mt-1 text-xs text-gray-500">This is how your water point will be listed on the map</p>
                       </div>
-                      <div>
-                        <label htmlFor="area" className="block text-sm font-medium text-gray-700 mb-1">
+                      <div className="space-y-2">
+                        <label htmlFor="area" className="block text-sm font-medium text-gray-700">
                           Area*
                         </label>
                         <select
@@ -399,7 +521,7 @@ ${emailContent}
                           required
                           value={formData.area}
                           onChange={handleChange}
-                          className="block w-full rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3"
+                          className="block w-full rounded-lg border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4"
                         >
                           <option value="">Select an area</option>
                           {areasData.map(area => (
@@ -407,8 +529,8 @@ ${emailContent}
                           ))}
                         </select>
                       </div>
-                      <div>
-                        <label htmlFor="subArea" className="block text-sm font-medium text-gray-700 mb-1">
+                      <div className="space-y-2">
+                        <label htmlFor="subArea" className="block text-sm font-medium text-gray-700">
                           Neighborhood/Sub-Area*
                         </label>
                         <select
@@ -418,7 +540,7 @@ ${emailContent}
                           value={formData.subArea}
                           onChange={handleChange}
                           disabled={!formData.area}
-                          className="block w-full rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:bg-gray-100 py-3"
+                          className="block w-full rounded-lg border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:bg-gray-100 py-3 px-4"
                         >
                           <option value="">Select neighborhood</option>
                           {getSubAreas().map(subArea => (
@@ -426,8 +548,8 @@ ${emailContent}
                           ))}
                         </select>
                       </div>
-                      <div>
-                        <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
+                      <div className="space-y-2">
+                        <label htmlFor="address" className="block text-sm font-medium text-gray-700">
                           Street Address*
                         </label>
                         <input
@@ -438,12 +560,12 @@ ${emailContent}
                           placeholder="e.g., 123 Main Street"
                           value={formData.address}
                           onChange={handleChange}
-                          className="block w-full rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3"
+                          className="block w-full rounded-lg border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4"
                         />
                       </div>
                     </div>
-                    <div>
-                      <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+                    <div className="space-y-2">
+                      <label htmlFor="description" className="block text-sm font-medium text-gray-700">
                         Description*
                       </label>
                       <textarea
@@ -454,7 +576,7 @@ ${emailContent}
                         placeholder="Briefly describe your water source, e.g., 'Residential home with 5000L storage tank and borehole'"
                         value={formData.description}
                         onChange={handleChange}
-                        className="block w-full rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3"
+                        className="block w-full rounded-lg border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4"
                       ></textarea>
                       <p className="mt-1 text-xs text-gray-500">Describe your water point and any relevant details for people who might collect water</p>
                     </div>
@@ -462,14 +584,19 @@ ${emailContent}
 
                   {/* Contact Information */}
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b">Contact Information</h3>
-                    <p className="text-sm text-gray-600 mb-4 bg-blue-50 p-3 rounded-lg">
-                      <FaExclamationCircle className="inline-block text-blue-500 mr-2" />
-                      This information will not be publicly displayed. It will be used only for verification and communication purposes.
-                    </p>
+                    <h3 className="flex items-center text-lg font-semibold text-gray-800 mb-4 pb-2 border-b">
+                      <span className="bg-teal-100 text-teal-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">2</span>
+                      Contact Information
+                    </h3>
+                    <div className="bg-blue-50 p-4 rounded-lg mb-5 border-l-4 border-blue-500">
+                      <p className="text-sm text-blue-800 flex items-center">
+                        <FaExclamationCircle className="text-blue-500 mr-2 flex-shrink-0" />
+                        Your contact information will not be publicly displayed. It will be used only for verification and communication purposes.
+                      </p>
+                    </div>
                     <div className="grid gap-6 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                      <div className="space-y-2">
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
                           Phone Number*
                         </label>
                         <input
@@ -480,11 +607,11 @@ ${emailContent}
                           placeholder="e.g., 082 123 4567"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="block w-full rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3"
+                          className="block w-full rounded-lg border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4"
                         />
                       </div>
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      <div className="space-y-2">
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                           Email Address*
                         </label>
                         <input
@@ -495,7 +622,7 @@ ${emailContent}
                           placeholder="e.g., yourname@example.com"
                           value={formData.email}
                           onChange={handleChange}
-                          className="block w-full rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3"
+                          className="block w-full rounded-lg border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-3 px-4"
                         />
                       </div>
                     </div>
@@ -503,7 +630,10 @@ ${emailContent}
 
                   {/* Availability */}
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b">Availability</h3>
+                    <h3 className="flex items-center text-lg font-semibold text-gray-800 mb-4 pb-2 border-b">
+                      <span className="bg-indigo-100 text-indigo-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">3</span>
+                      Availability
+                    </h3>
                     <div className="mb-6">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Available Days*
@@ -514,10 +644,10 @@ ${emailContent}
                             type="button"
                             key={day.id}
                             onClick={() => handleDayToggle(day.id)}
-                            className={`flex flex-col items-center justify-center p-3 rounded-md transition-colors ${
+                            className={`flex flex-col items-center justify-center p-3 rounded-lg transition-all duration-200 ${
                               formData.availableDays.includes(day.id)
-                                ? 'bg-indigo-100 text-indigo-800 font-medium border border-indigo-200'
-                                : 'bg-white text-gray-700 border border-gray-200 hover:border-indigo-200'
+                                ? 'bg-indigo-100 text-indigo-800 font-medium border border-indigo-200 shadow-sm'
+                                : 'bg-white text-gray-700 border border-gray-200 hover:border-indigo-200 hover:bg-indigo-50'
                             }`}
                           >
                             <span>{day.short}</span>
@@ -542,32 +672,34 @@ ${emailContent}
                           {formData.availableDays.map(dayId => {
                             const day = daysOfWeek.find(d => d.id === dayId);
                             return (
-                              <div key={dayId} className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                                <h4 className="font-medium text-gray-800 mb-3">{day.name}</h4>
+                              <div key={dayId} className="bg-gray-50 p-5 rounded-lg border border-gray-200 shadow-sm">
+                                <h4 className="font-medium text-gray-800 mb-3 pb-2 border-b border-gray-200">{day.name}</h4>
                                 
                                 {/* Time slot inputs for this day */}
-                                <div className="space-y-3">
+                                <div className="space-y-4">
                                   {/* Morning slot */}
-                                  <div className="flex items-center">
-                                    <input
-                                      type="checkbox"
-                                      id={`morning-${dayId}`}
-                                      checked={formData[`morning-${dayId}`] || false}
-                                      onChange={(e) => handleChange({
-                                        target: {
-                                          name: `morning-${dayId}`,
-                                          type: 'checkbox',
-                                          checked: e.target.checked
-                                        }
-                                      })}
-                                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-2 border-indigo-200 rounded"
-                                    />
-                                    <label htmlFor={`morning-${dayId}`} className="ml-2 text-sm text-gray-700">
-                                      Morning (6:00 AM - 12:00 PM)
-                                    </label>
+                                  <div className="flex flex-wrap items-center gap-2">
+                                    <div className="flex items-center min-w-[200px]">
+                                      <input
+                                        type="checkbox"
+                                        id={`morning-${dayId}`}
+                                        checked={formData[`morning-${dayId}`] || false}
+                                        onChange={(e) => handleChange({
+                                          target: {
+                                            name: `morning-${dayId}`,
+                                            type: 'checkbox',
+                                            checked: e.target.checked
+                                          }
+                                        })}
+                                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-2 border-indigo-200 rounded"
+                                      />
+                                      <label htmlFor={`morning-${dayId}`} className="ml-2 text-sm text-gray-700">
+                                        Morning (6:00 - 12:00)
+                                      </label>
+                                    </div>
                                     
                                     {formData[`morning-${dayId}`] && (
-                                      <div className="ml-6 flex items-center space-x-2">
+                                      <div className="flex items-center space-x-2 bg-white px-3 py-2 rounded-lg border border-gray-200">
                                         <select
                                           value={formData[`morning-start-${dayId}`] || "06:00"}
                                           onChange={(e) => handleChange({
@@ -576,7 +708,7 @@ ${emailContent}
                                               value: e.target.value
                                             }
                                           })}
-                                          className="block rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-2 text-sm"
+                                          className="block rounded-lg border border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1.5 px-2 text-sm"
                                         >
                                           {["06:00", "07:00", "08:00", "09:00", "10:00", "11:00"].map(time => (
                                             <option key={time} value={time}>{time}</option>
@@ -591,7 +723,7 @@ ${emailContent}
                                               value: e.target.value
                                             }
                                           })}
-                                          className="block rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-2 text-sm"
+                                          className="block rounded-lg border border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1.5 px-2 text-sm"
                                         >
                                           {["07:00", "08:00", "09:00", "10:00", "11:00", "12:00"].map(time => (
                                             <option key={time} value={time}>{time}</option>
@@ -602,26 +734,28 @@ ${emailContent}
                                   </div>
                                   
                                   {/* Afternoon slot */}
-                                  <div className="flex items-center">
-                                    <input
-                                      type="checkbox"
-                                      id={`afternoon-${dayId}`}
-                                      checked={formData[`afternoon-${dayId}`] || false}
-                                      onChange={(e) => handleChange({
-                                        target: {
-                                          name: `afternoon-${dayId}`,
-                                          type: 'checkbox',
-                                          checked: e.target.checked
-                                        }
-                                      })}
-                                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-2 border-indigo-200 rounded"
-                                    />
-                                    <label htmlFor={`afternoon-${dayId}`} className="ml-2 text-sm text-gray-700">
-                                      Afternoon (12:00 PM - 5:00 PM)
-                                    </label>
+                                  <div className="flex flex-wrap items-center gap-2">
+                                    <div className="flex items-center min-w-[200px]">
+                                      <input
+                                        type="checkbox"
+                                        id={`afternoon-${dayId}`}
+                                        checked={formData[`afternoon-${dayId}`] || false}
+                                        onChange={(e) => handleChange({
+                                          target: {
+                                            name: `afternoon-${dayId}`,
+                                            type: 'checkbox',
+                                            checked: e.target.checked
+                                          }
+                                        })}
+                                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-2 border-indigo-200 rounded"
+                                      />
+                                      <label htmlFor={`afternoon-${dayId}`} className="ml-2 text-sm text-gray-700">
+                                        Afternoon (12:00 - 17:00)
+                                      </label>
+                                    </div>
                                     
                                     {formData[`afternoon-${dayId}`] && (
-                                      <div className="ml-6 flex items-center space-x-2">
+                                      <div className="flex items-center space-x-2 bg-white px-3 py-2 rounded-lg border border-gray-200">
                                         <select
                                           value={formData[`afternoon-start-${dayId}`] || "12:00"}
                                           onChange={(e) => handleChange({
@@ -630,7 +764,7 @@ ${emailContent}
                                               value: e.target.value
                                             }
                                           })}
-                                          className="block rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-2 text-sm"
+                                          className="block rounded-lg border border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1.5 px-2 text-sm"
                                         >
                                           {["12:00", "13:00", "14:00", "15:00", "16:00"].map(time => (
                                             <option key={time} value={time}>{time}</option>
@@ -645,7 +779,7 @@ ${emailContent}
                                               value: e.target.value
                                             }
                                           })}
-                                          className="block rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-2 text-sm"
+                                          className="block rounded-lg border border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1.5 px-2 text-sm"
                                         >
                                           {["13:00", "14:00", "15:00", "16:00", "17:00"].map(time => (
                                             <option key={time} value={time}>{time}</option>
@@ -656,26 +790,28 @@ ${emailContent}
                                   </div>
                                   
                                   {/* Evening slot */}
-                                  <div className="flex items-center">
-                                    <input
-                                      type="checkbox"
-                                      id={`evening-${dayId}`}
-                                      checked={formData[`evening-${dayId}`] || false}
-                                      onChange={(e) => handleChange({
-                                        target: {
-                                          name: `evening-${dayId}`,
-                                          type: 'checkbox',
-                                          checked: e.target.checked
-                                        }
-                                      })}
-                                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-2 border-indigo-200 rounded"
-                                    />
-                                    <label htmlFor={`evening-${dayId}`} className="ml-2 text-sm text-gray-700">
-                                      Evening (5:00 PM - 9:00 PM)
-                                    </label>
+                                  <div className="flex flex-wrap items-center gap-2">
+                                    <div className="flex items-center min-w-[200px]">
+                                      <input
+                                        type="checkbox"
+                                        id={`evening-${dayId}`}
+                                        checked={formData[`evening-${dayId}`] || false}
+                                        onChange={(e) => handleChange({
+                                          target: {
+                                            name: `evening-${dayId}`,
+                                            type: 'checkbox',
+                                            checked: e.target.checked
+                                          }
+                                        })}
+                                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-2 border-indigo-200 rounded"
+                                      />
+                                      <label htmlFor={`evening-${dayId}`} className="ml-2 text-sm text-gray-700">
+                                        Evening (17:00 - 21:00)
+                                      </label>
+                                    </div>
                                     
                                     {formData[`evening-${dayId}`] && (
-                                      <div className="ml-6 flex items-center space-x-2">
+                                      <div className="flex items-center space-x-2 bg-white px-3 py-2 rounded-lg border border-gray-200">
                                         <select
                                           value={formData[`evening-start-${dayId}`] || "17:00"}
                                           onChange={(e) => handleChange({
@@ -684,7 +820,7 @@ ${emailContent}
                                               value: e.target.value
                                             }
                                           })}
-                                          className="block rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-2 text-sm"
+                                          className="block rounded-lg border border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1.5 px-2 text-sm"
                                         >
                                           {["17:00", "18:00", "19:00", "20:00"].map(time => (
                                             <option key={time} value={time}>{time}</option>
@@ -699,7 +835,7 @@ ${emailContent}
                                               value: e.target.value
                                             }
                                           })}
-                                          className="block rounded-md border-2 border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-2 text-sm"
+                                          className="block rounded-lg border border-indigo-200 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 py-1.5 px-2 text-sm"
                                         >
                                           {["18:00", "19:00", "20:00", "21:00"].map(time => (
                                             <option key={time} value={time}>{time}</option>
@@ -726,21 +862,24 @@ ${emailContent}
 
                   {/* Email Preview */}
                   {isFormComplete() && (
-                    <div className="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Email Preview</h3>
+                    <div className="mt-8 bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-inner">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2 flex items-center">
+                        <FaEnvelope className="text-blue-600 mr-2" />
+                        Email Preview
+                      </h3>
                       
                       {/* Add recipient info notice */}
-                      <div className="mb-4 bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-sm">
+                      <div className="mb-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-lg p-4 text-sm">
                         <p className="flex items-start">
                           <FaExclamationCircle className="text-yellow-600 mr-2 mt-0.5 flex-shrink-0" />
                           <span>
-                            <strong className="text-yellow-800">Important:</strong> When sending your email, please use <span className="font-medium">{contactEmail}</span> as the recipient address. This information will be automatically copied when you click "Copy Email with Address".
+                            <strong className="text-yellow-800">Important:</strong> When sending your email, please use <span className="font-medium">{contactEmail}</span> as the recipient address. This information will be automatically copied when you click "Copy Email Content".
                           </span>
                         </p>
                       </div>
                       
                       {/* Add photo requirement */}
-                      <div className="mb-4 bg-red-50 border border-red-200 rounded-lg p-3 text-sm">
+                      <div className="mb-4 bg-red-50 border-l-4 border-red-400 rounded-lg p-4 text-sm">
                         <p className="flex items-start">
                           <FaExclamationCircle className="text-red-600 mr-2 mt-0.5 flex-shrink-0" />
                           <span>
@@ -750,11 +889,11 @@ ${emailContent}
                       </div>
                       
                       <p className="text-sm text-gray-600 mb-4">
-                        This is what will be sent when you click "Generate Email". You can review it before sending.
+                        This is what will be sent when you generate your email. Review it before sending.
                       </p>
                       <div 
                         ref={emailContentRef} 
-                        className="bg-white p-4 rounded-lg border border-gray-300 font-mono text-sm text-gray-700 whitespace-pre-wrap mb-4"
+                        className="bg-white p-4 rounded-lg border border-gray-300 font-mono text-sm text-gray-700 whitespace-pre-wrap mb-4 max-h-64 overflow-y-auto shadow-inner"
                       >
                         {generateEmailContent()}
                       </div>
@@ -762,21 +901,21 @@ ${emailContent}
                   )}
 
                   {/* Action Buttons */}
-                  <div className="pt-4 border-t border-gray-200">
+                  <div className="pt-6 border-t border-gray-200">
                     <div className="flex flex-col sm:flex-row justify-between gap-4">
                       <button
                         onClick={copyToClipboard}
                         disabled={!isFormComplete()}
-                        className={`sm:flex-1 flex items-center justify-center px-4 py-3 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 ${!isFormComplete() ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`sm:flex-1 flex items-center justify-center px-6 py-3.5 border border-gray-300 rounded-lg shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 transition-all duration-200 ${!isFormComplete() ? 'opacity-50 cursor-not-allowed' : 'hover:scale-[1.02]'}`}
                       >
                         <FaCopy className="mr-2" />
-                        {copySuccess ? "Copied!" : "Copy Email Content (Recommended)"}
+                        {copySuccess ? "Copied to Clipboard!" : "Copy Email Content"}
                       </button>
                       
                       <button
                         onClick={openEmailClient}
                         disabled={!isFormComplete()}
-                        className={`sm:flex-1 flex items-center justify-center px-4 py-3 border border-transparent rounded-md shadow-sm textBase font-medium text-white bg-indigo-600 hover:bg-indigo-700 ${!isFormComplete() ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`sm:flex-1 flex items-center justify-center px-6 py-3.5 border border-transparent rounded-lg shadow-md textBase font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 ${!isFormComplete() ? 'opacity-50 cursor-not-allowed' : 'hover:scale-[1.02] hover:shadow-lg'}`}
                       >
                         <FaEnvelope className="mr-2" />
                         Open Email Client
@@ -790,46 +929,158 @@ ${emailContent}
                       </p>
                     )}
                     
-                    <div className="mt-4 bg-blue-50 p-3 rounded-lg text-sm">
+                    <div className="mt-4 bg-blue-50 p-4 rounded-lg text-sm">
                       <h4 className="font-medium text-blue-800 mb-1">Using the buttons above:</h4>
-                      <ol className="list-decimal list-inside space-y-1 text-gray-700">
+                      <ol className="list-decimal list-inside space-y-1 text-blue-700">
                         <li><strong>Copy Email Content</strong>: Copies all information to your clipboard. Open your email client manually, create a new email to {contactEmail}, and paste the content.</li>
                         <li><strong>Open Email Client</strong>: Attempts to open your default email client automatically. This may not work on all systems.</li>
                       </ol>
                     </div>
-                  </div>
-                  
-                  <div className="mt-4 text-sm text-gray-600">
-                    <p className="flex items-start">
-                      <FaExclamationCircle className="text-gray-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span>
-                        If the "Generate Email" button doesn't open your email client, please use the "Copy Email with Address" button 
-                        and manually paste the content into a new email to <span className="font-medium">{contactEmail}</span>
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Instructions at the bottom */}
-              <div className="mt-6 bg-blue-50 rounded-xl p-4 shadow-sm animate-fade-in">
-                <div className="flex items-start">
-                  <div className="bg-blue-100 p-2 rounded-full mr-3 flex-shrink-0">
-                    <FaExclamationCircle className="text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-blue-800 mb-1">What happens after you send your email?</h3>
-                    <p className="text-sm text-gray-700">
-                      After receiving your email, our team will review your information and may contact you to verify details. 
-                      Once verified, your water point will be added to our map within 24-48 hours. You'll receive a confirmation 
-                      email when your listing goes live.
-                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
+        {/* Custom animations for the page */}
+        <style jsx="true">{`
+          /* Fading and sliding animations */
+          .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+          }
+          
+          .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+          }
+          
+          .animation-delay-200 {
+            animation-delay: 0.2s;
+          }
+          
+          .animation-delay-400 {
+            animation-delay: 0.4s;
+          }
+          
+          .animation-delay-1000 {
+            animation-delay: 1s;
+          }
+          
+          .animation-delay-2000 {
+            animation-delay: 2s;
+          }
+
+          /* Floating and morphing animations */
+          .animate-float-slow {
+            animation: float 20s ease-in-out infinite;
+          }
+          
+          .animate-float-reverse {
+            animation: floatReverse 15s ease-in-out infinite;
+          }
+          
+          .animate-pulse-slow {
+            animation: pulseSlow 6s ease-in-out infinite;
+          }
+          
+          .animate-ping-slow {
+            animation: pingSlow 10s cubic-bezier(0, 0, 0.2, 1) infinite;
+          }
+          
+          .animate-morph {
+            animation: morph 25s ease-in-out infinite;
+          }
+          
+          .animate-scan-slow {
+            animation: scan 15s ease-in-out infinite;
+          }
+          
+          .animate-glow {
+            animation: glow 4s ease-in-out infinite;
+          }
+          
+          .animate-float-subtle {
+            animation: floatSubtle 10s ease-in-out infinite;
+          }
+          
+          .animate-pulse-once {
+            animation: pulseOnce 2s ease-in-out;
+          }
+          
+          /* Button animation */
+          @keyframes pulseOnce {
+            0%, 100% { 
+              box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3);
+            }
+            50% { 
+              box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); 
+            }
+          }
+          
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          
+          @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+          }
+          
+          @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0); }
+            25% { transform: translateY(-20px) translateX(10px) rotate(2deg); }
+            50% { transform: translateY(-15px) translateX(15px) rotate(0); }
+            75% { transform: translateY(-25px) translateX(5px) rotate(-2deg); }
+          }
+          
+          @keyframes floatReverse {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0); }
+            25% { transform: translateY(15px) translateX(-10px) rotate(-1deg); }
+            50% { transform: translateY(20px) translateX(-15px) rotate(0); }
+            75% { transform: translateY(10px) translateX(-5px) rotate(1deg); }
+          }
+          
+          @keyframes pulseSlow {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.9; }
+          }
+          
+          @keyframes pingSlow {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 0.2; }
+            100% { transform: scale(0.8); opacity: 0.8; }
+          }
+          
+          @keyframes morph {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            50% { border-radius: 50% 60% 30% 40% / 40% 30% 70% 60%; }
+            75% { border-radius: 40% 60% 50% 70% / 60% 70% 40% 30%; }
+          }
+          
+          @keyframes scan {
+            0%, 100% { transform: translateX(-100%); opacity: 0; }
+            50% { transform: translateX(100%); opacity: 1; }
+          }
+          
+          @keyframes glow {
+            0%, 100% { opacity: 0.4; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+            50% { opacity: 0.8; box-shadow: 0 0 30px rgba(59, 130, 246, 0.8); }
+          }
+          
+          @keyframes floatSubtle {
+            0%, 100% { transform: translateY(0) rotate(12deg); }
+            50% { transform: translateY(-10px) rotate(14deg); }
+          }
+          
+          /* Mobile optimizations */
+          @media (max-width: 640px) {
+            .animate-fade-in, .animate-fade-in-up {
+              animation-duration: 0.3s;
+            }
+          }
+        `}</style>
       </div>
     </HelmetProvider>
   );
