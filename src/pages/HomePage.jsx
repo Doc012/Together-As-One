@@ -48,7 +48,7 @@ export default function HomePage() {
     },
     {
       id: 2,
-      image: "https://www.ethiocec.org/img/help.jpeg",
+      image: "https://www.imf.org/-/media/Images/IMF/Blog/Migrated/BLOG-2099x600-Coming-Together-LoveTheWind-iStock-by-Getty-Images-iStock-953086840.ashx",
       title: "Find Water Access Points",
       subtitle: "Locate Available Water Resources Near You"
     },
