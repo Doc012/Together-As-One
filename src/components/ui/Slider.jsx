@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function Slider({ slides }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Preload images
   useEffect(() => {
@@ -23,7 +24,6 @@ export default function Slider({ slides }) {
         setImagesLoaded(true);
       } catch (error) {
         console.error("Failed to load some images", error);
-        // Still set to true to allow display even if some fail
         setImagesLoaded(true);
       }
     };
@@ -46,30 +46,40 @@ export default function Slider({ slides }) {
     setCurrentSlide(index);
   };
 
+  const scrollToNextSection = () => {
+    window.scrollTo({
+      top: window.innerHeight - 40, // Scroll just past the hero
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div className="relative h-[500px] md:h-[600px] -mt-16">
-      {/* Full-width container that extends beyond parent padding */}
-      <div className="absolute inset-x-0 h-full" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw' }}>
-        {/* Static loader that shows while images are loading */}
+    <div className="relative h-[110vh] w-full -mt-16">
+      {/* Full-width container */}
+      <div className="absolute inset-0 w-full h-full">
+        {/* Static loader */}
         {!imagesLoaded && (
-          <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-            <div className="animate-pulse text-gray-500">Loading...</div>
+          <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+              <p className="mt-4 text-blue-600 font-medium">Loading...</p>
+            </div>
           </div>
         )}
         
-        {/* Slider content - only shown after images are loaded */}
+        {/* Slider content */}
         {imagesLoaded && (
           <>
             {/* Individual slides */}
             {slides.map((slide, index) => (
               <div 
                 key={slide.id}
-                className={`absolute inset-0 transition-opacity duration-500 ${
+                className={`absolute inset-0 transition-opacity duration-700 ${
                   index === currentSlide ? 'opacity-100' : 'opacity-0'
                 }`}
               >
-                {/* Image with overlay */}
-                <div className="absolute inset-0 bg-black/40"></div>
+                {/* Image with gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60"></div>
                 <img 
                   src={slide.image} 
                   alt={slide.title} 
@@ -81,7 +91,7 @@ export default function Slider({ slides }) {
         )}
       </div>
       
-      {/* Content layer that sits on top of the slider */}
+      {/* Content layer */}
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="text-center text-white max-w-3xl px-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 drop-shadow-lg">
@@ -91,26 +101,47 @@ export default function Slider({ slides }) {
             {slides[currentSlide]?.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <Link to="/find-water" className="group bg-white text-indigo-700 hover:bg-indigo-50 transition-all py-3 px-8 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+            <Link to="/find-water" className="group bg-white text-blue-700 hover:bg-blue-50 transition-all py-3 px-8 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
               Find Water Near Me
               <FaArrowRight className="transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link to="/volunteer" className="bg-indigo-500 hover:bg-indigo-400 text-white transition-all py-3 px-8 rounded-lg font-bold text-lg shadow-lg border border-indigo-400/50 hover:shadow-xl">
+            <Link to="/volunteer" className="bg-blue-500 hover:bg-blue-400 text-white transition-all py-3 px-8 rounded-lg font-bold text-lg shadow-lg border border-blue-400/50 hover:shadow-xl">
               Volunteer Your Borehole
             </Link>
           </div>
         </div>
       </div>
       
-      {/* Dots Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex space-x-2">
+      {/* Navigation arrows */}
+      {/* {imagesLoaded && (
+        <>
+          <button 
+            onClick={() => goToSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
+            aria-label="Previous slide"
+          >
+            <FaChevronLeft className="text-xl" />
+          </button>
+          
+          <button 
+            onClick={() => goToSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110"
+            aria-label="Next slide"
+          >
+            <FaChevronRight className="text-xl" />
+          </button>
+        </>
+      )} */}
+      
+      {/* Dots Indicator - moved to bottom */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all ${
               index === currentSlide 
-                ? 'bg-white scale-125' 
+                ? 'bg-white w-6' 
                 : 'bg-white/50 hover:bg-white/70'
             }`}
             aria-label={`Go to slide ${index + 1}`}

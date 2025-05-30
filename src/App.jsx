@@ -20,7 +20,8 @@ export default function App() {
       <LocationProvider>
         <div className="flex flex-col min-h-screen bg-blue-50">
           <Header />
-          <main className="flex-grow container mx-auto px-4 py-8">
+          
+          <main className="flex-grow w-full py-8">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/find-water" element={<FindWaterPage />} />
@@ -29,6 +30,7 @@ export default function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
+          
           <Footer />
         </div>
         <ToastContainer position="bottom-right" />
