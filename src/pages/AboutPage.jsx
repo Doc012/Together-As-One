@@ -156,7 +156,7 @@ ${emailContent}`;
                       className="h-full w-full object-cover"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = "https://images.unsplash.com/photo-1578496479531-32e296d5c6e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80";
+                        e.target.src = "https://www.sciencelearn.org.nz/_next/image?url=https%3A%2F%2Fwww.datocms-assets.com%2F117510%2F1722387797-water20161110-17124-gv7a3b.jpg%3Fw%3D1840%26h%3D1226.6666666666665&w=1920&q=85&dpl=dpl_4n9pVfrF4H6vbtWLHqt8okXU1ahu";
                       }}
                     />
                     <div className="absolute top-2 left-2 flex items-center space-x-1 bg-white/80 backdrop-blur-sm rounded-full py-0.5 px-2 shadow-md">
