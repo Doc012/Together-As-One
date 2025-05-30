@@ -144,11 +144,11 @@ ${emailContent}`;
         {/* Our Story Section */}
         <section className="mb-20">
           <div className="bg-gradient-to-r from-blue-50 to-white rounded-2xl overflow-hidden shadow-sm border border-blue-100">
-            <div className="flex flex-col md:flex-row h-80">
-              {/* Left column with image - ADJUSTED TO FIT CONTAINER */}
-              <div className="md:w-5/12 relative animate-fade-in-left h-auto">
-                <div className="h-full flex items-stretch">
-                  <div className="relative w-full">
+            <div className="flex flex-col md:flex-row">
+              {/* Left column with image - RESPONSIVE ADJUSTMENTS */}
+              <div className="w-full md:w-5/12 h-64 md:h-auto relative animate-fade-in-left">
+                <div className="h-full w-full">
+                  <div className="relative h-full w-full">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-sky-300/20 mix-blend-overlay"></div>
                     <img 
                       src="/images/community-sharing.jpg" 
@@ -167,17 +167,17 @@ ${emailContent}`;
                 </div>
               </div>
               
-              {/* Right column with content */}
-              <div className="md:w-7/12 p-4 md:p-6 animate-fade-in-right">
+              {/* Right column with content - RESPONSIVE ADJUSTMENTS */}
+              <div className="w-full md:w-7/12 p-4 md:p-6 lg:p-8 animate-fade-in-right">
                 <div className="flex items-center mb-2">
                   <div className="bg-gradient-to-r from-blue-400 to-sky-400 p-1.5 rounded-lg mr-2 text-white">
                     <FaHeartbeat className="h-4 w-4" />
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-800">Our Story</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Our Story</h2>
                 </div>
                 
                 <div className="space-y-2 prose prose-sm prose-blue">
-                  <p className="text-gray-600 leading-relaxed text-sm">
+                  <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">
                     Born from a collective response to South Africa's water crisis, our platform emerged when neighbors began connecting to share borehole access during municipal outages. What started as informal community support has grown into a coordinated network of care.
                   </p>
                   
@@ -193,18 +193,9 @@ ${emailContent}`;
                     </div>
                   </div>
                   
-                  <p className="text-gray-600 leading-relaxed text-sm">
+                  <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">
                     Today, we're transforming how communities respond to water challenges. By connecting those with resources to neighbors in need, we're creating resilient networks that turn crisis into opportunity for connection, proving that even our most essential needs can become bridges between us.
                   </p>
-                  
-                  {/* <div className="flex items-center mt-2">
-                    <a href="#how-it-works" className="flex items-center space-x-1 text-blue-600 hover:text-blue-700 transition-colors font-medium text-sm">
-                      <span>Learn how it works</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </a>
-                  </div> */}
                 </div>
               </div>
             </div>
