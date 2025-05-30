@@ -48,7 +48,7 @@ export default function HomePage() {
     },
     {
       id: 2,
-      image: "https://www.imf.org/-/media/Images/IMF/Blog/Migrated/BLOG-2099x600-Coming-Together-LoveTheWind-iStock-by-Getty-Images-iStock-953086840.ashx",
+      image: "https://media.licdn.com/dms/image/v2/C4E12AQGtyuY_rK1KUg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1609844939704?e=2147483647&v=beta&t=jMtDDXEpoZgofbvJ5Y40S-ix8Tw4197xEZokwtI5fSw",
       title: "Find Water Access Points",
       subtitle: "Locate Available Water Resources Near You"
     },
