@@ -29,7 +29,7 @@ export const waterPoints = [
       latitude: -26.70880,
       longitude: 27.84050
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://s.hdnux.com/photos/61/17/31/12908103/4/rawImage.jpg"
   },
   {
     id: "wp2",
@@ -55,7 +55,7 @@ export const waterPoints = [
       latitude: -26.71689,
       longitude: 27.84225
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://devvlsnxxkrq9.cloudfront.net/prod/assets/Newton-Swansea-5-bedrooms-Beautiful-House.jpg"
   },
   {
     id: "wp3",
@@ -81,7 +81,7 @@ export const waterPoints = [
       latitude: -26.67450,
       longitude: 27.94582
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://interiordesign.net/wp-content/uploads/2024/12/Interior-Design-Westchester-Home-Amy-Courtney-Design-RockledgeDrive-29C.jpg"
   },
   {
     id: "wp4",
@@ -109,7 +109,7 @@ export const waterPoints = [
       latitude: -26.67021,
       longitude: 27.90232
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://i.ytimg.com/vi/B56pik49Y5s/maxresdefault.jpg"
   },
   {
     id: "wp5",
@@ -133,7 +133,7 @@ export const waterPoints = [
       latitude: -26.81514,
       longitude: 27.83196
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://images.homes.com/listings/215/6773596034-060057691/2029-garrett-farms-row-shreveport-la-primaryphoto.jpg"
   },
   {
     id: "wp6",
@@ -159,7 +159,7 @@ export const waterPoints = [
       latitude: -26.78967,
       longitude: 27.84392
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://static.schumacherhomes.com/umbraco/media/wvflutbh/image4.jpg?format=webp"
   },
   {
     id: "wp7",
@@ -187,7 +187,7 @@ export const waterPoints = [
       latitude: -26.52789,
       longitude: 27.85409
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://static3.mansionglobal.com/production/media/article-images/19b5fd6a46cc3c644b5e0b2f3e87260c/large_3157-Batis-Cres-Waterfall-Country-Est-Midrand-Corlia-Jawitz-Midrand-S36-32.jpg"
   },
   {
     id: "wp8",
@@ -211,7 +211,7 @@ export const waterPoints = [
       latitude: -26.54321,
       longitude: 27.83451
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://images.adsttc.com/media/images/5efe/1f7f/b357/6540/5400/01d7/newsletter/archdaily-houses-104.jpg?1593712501"
   },
   {
     id: "wp9",
@@ -238,7 +238,7 @@ export const waterPoints = [
       latitude: -26.56782,
       longitude: 27.84213
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://images.pamgolding.co.za/content/properties/202404/319239/h/319239_h_181.jpg?w=600&quality=75"
   },
   {
     id: "wp10",
@@ -264,7 +264,7 @@ export const waterPoints = [
       latitude: -26.55432,
       longitude: 27.85631
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://hips.hearstapps.com/hmg-prod/images/imagereader-3-1550604185.jpg?crop=0.8883333333333333xw:1xh;center,top&resize=1200:*"
   },
   {
     id: "wp11",
@@ -290,7 +290,7 @@ export const waterPoints = [
       latitude: -26.65723,
       longitude: 27.92134
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://everythingproperty.co.za/wp-content/uploads/2024/03/House-Zai-Constantia-Seeff-1-scaled.jpg"
   },
   {
     id: "wp12",
@@ -316,7 +316,7 @@ export const waterPoints = [
       latitude: -26.63124,
       longitude: 27.95831
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://media.istockphoto.com/id/147205632/photo/modern-home-with-swimming-pool.jpg?s=612x612&w=0&k=20&c=sxRQ398SxAjC4FrRombjl46oDGJVdy23T7i3RXO-mww="
   },
   {
     id: "wp13",
@@ -348,7 +348,7 @@ export const waterPoints = [
       latitude: -26.69532,
       longitude: 27.81976
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://img.jamesedition.com/listing_images/2025/03/26/13/53/50/a799feb3-fd1b-4aa8-bdb9-503f1c1d30ea/je/760x470xc.jpg"
   },
   {
     id: "wp14",
@@ -373,7 +373,7 @@ export const waterPoints = [
       latitude: -26.82459,
       longitude: 27.84613
     },
-    imageUrl: "https://webberstudio.com/wp-content/uploads/2023/02/Stunning-House-Design.jpg"
+    imageUrl: "https://img.jamesedition.com/listing_images/2025/04/04/11/23/59/f32955d8-3618-4731-8095-35f4e62b4681/je/760x470xc.jpg"
   },
   {
     id: "wp15",
