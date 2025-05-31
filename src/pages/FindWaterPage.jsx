@@ -61,7 +61,7 @@ const demoWaterPoints = [
       latitude: -26.70250,
       longitude: 27.83950
     },
-    imageUrl: "https://s.hdnux.com/photos/61/17/31/12908103/4/rawImage.jpg",
+    imageUrl: "https://conklinconstructionco.com/wp-content/uploads/2024/05/Traditional-houses-with-nice-landscape.webp",
     isDemo: true
   },
   {
