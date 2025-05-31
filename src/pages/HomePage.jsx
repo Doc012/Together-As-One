@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   FaMapMarkerAlt, FaHandHoldingWater, FaUsers,
   FaArrowRight, FaSearch, FaPhone,
-  FaListUl, FaBell
+  FaListUl, FaBell, FaWater, FaSpinner
 } from 'react-icons/fa';
 import { MdLocationOn, MdWaterDrop, MdOutlineWaterDrop } from 'react-icons/md';
 import { IoWaterOutline } from 'react-icons/io5';
@@ -14,6 +14,58 @@ import DemoVolunteersSection from '../components/DemoVolunteersSection';
 export default function HomePage() {
   const [userLocation, setUserLocation] = useState(null);
   const [locationStatus, setLocationStatus] = useState('idle');
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(true);
+  
+  // Add useEffect to simulate initial app loading
+  useEffect(() => {
+    // Simulate initial loading time (you can remove this setTimeout in production)
+    const initialLoadTimer = setTimeout(() => {
+      setInitialLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(initialLoadTimer);
+  }, []);
+
+  // Add useEffect to preload images
+  useEffect(() => {
+    const imageUrls = [
+      "https://www.ethiocec.org/img/help.jpeg",
+      "https://media.licdn.com/dms/image/v2/C4E12AQGtyuY_rK1KUg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1609844939704?e=2147483647&v=beta&t=jMtDDXEpoZgofbvJ5Y40S-ix8Tw4197xEZokwtI5fSw",
+      "https://prod-cms.scouts.org.uk/media/5046/thumbnail_db-20160331-0687-1680.jpg"
+    ];
+
+    let loadedCount = 0;
+    const totalImages = imageUrls.length;
+
+    // Create image objects to track loading
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        console.error(`Failed to load image: ${url}`);
+        if (loadedCount === totalImages) {
+          setImagesLoaded(true);
+        }
+      };
+    });
+
+    // Fallback in case images take too long to load
+    const fallbackTimer = setTimeout(() => {
+      if (!imagesLoaded) {
+        setImagesLoaded(true);
+      }
+    }, 5000); // 5 second fallback
+
+    return () => clearTimeout(fallbackTimer);
+  }, []);
   
   // Handle location detection
   const detectLocation = () => {
@@ -60,6 +112,45 @@ export default function HomePage() {
       subtitle: "Help Your Community By Sharing Your Water Supply"
     }
   ];
+
+  // Show loading screen if initial loading or images aren't loaded yet
+  if (initialLoading || !imagesLoaded) {
+    return (
+      <div className="fixed inset-0 bg-blue-600 flex flex-col items-center justify-center z-50">
+        <div className="text-center p-8 max-w-md">
+          <div className="mb-6 relative">
+            <div className="w-24 h-24 border-t-4 border-r-4 border-white rounded-full animate-spin absolute"></div>
+            <div className="w-24 h-24 flex items-center justify-center">
+              <FaWater className="text-white text-3xl animate-pulse" />
+            </div>
+          </div>
+          <h1 className="text-white text-3xl md:text-4xl font-bold mb-4">Together As One</h1>
+          <p className="text-blue-100 text-lg mb-8">Community Water Solidarity Network</p>
+          <div className="w-full bg-blue-700 rounded-full h-2 mb-4">
+            <div 
+              className="bg-white h-2 rounded-full animate-pulse"
+              style={{ width: initialLoading ? '30%' : '75%' }}
+            ></div>
+          </div>
+          <p className="text-blue-200 text-sm">
+            {initialLoading ? 'Loading application...' : 'Loading resources...'}
+          </p>
+        </div>
+
+        {/* Water-themed background elements */}
+        <div className="absolute inset-0 overflow-hidden z-[-1]">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full -translate-x-1/2 -translate-y-1/2 opacity-50"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500 rounded-full translate-x-1/2 translate-y-1/2 opacity-50"></div>
+          
+          <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-blue-400 rounded-full opacity-30 animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-blue-400 rounded-full opacity-20 animate-pulse animation-delay-1000"></div>
+          
+          <div className="absolute bottom-1/4 right-1/3 w-20 h-20 bg-white rounded-b-full -rotate-12 opacity-10"></div>
+          <div className="absolute top-1/3 left-1/4 w-12 h-12 bg-white rounded-b-full rotate-45 opacity-10"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="overflow-x-hidden bg-gray-50">
@@ -171,6 +262,170 @@ export default function HomePage() {
                   >
                     Register to Share
                   </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-block">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 relative">
+                How Our Platform Works
+                <div className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
+              </h2>
+            </div>
+            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              A community platform connecting those who need water with those who can share, making it easier for everyone during water outages.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-10">
+            {/* Find Water Card */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="p-8">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 mb-6 transform group-hover:-translate-y-2 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-blue-500 to-indigo-600 w-16 h-16 rounded-xl flex items-center justify-center shadow-md mx-auto">
+                    <FaSearch className="text-white text-3xl" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-800 text-center group-hover:text-blue-600 transition-colors">Find Water</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Use your location or search by area to find nearby homes and water points offering access during specific times.
+                </p>
+                <div className="mt-6 text-center">
+                  <Link to="/find-water" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group/link">
+                    Find nearby water
+                    <FaArrowRight className="ml-2 text-sm transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
+            {/* Share Water Card */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="p-8">
+                <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl p-6 mb-6 transform group-hover:-translate-y-2 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-indigo-500 to-blue-600 w-16 h-16 rounded-xl flex items-center justify-center shadow-md mx-auto">
+                    <FaHandHoldingWater className="text-white text-3xl" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-800 text-center group-hover:text-blue-600 transition-colors">Share Water</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Residents with boreholes, JoJo tanks, or other water sources can volunteer to share with neighbors during their available hours.
+                </p>
+                <div className="mt-6 text-center">
+                  <Link to="/volunteer" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group/link">
+                    Register your water source
+                    <FaArrowRight className="ml-2 text-sm transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
+            {/* Stay Updated Card */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="p-8">
+                <div className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-6 mb-6 transform group-hover:-translate-y-2 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-teal-500 to-blue-600 w-16 h-16 rounded-xl flex items-center justify-center shadow-md mx-auto">
+                    <FaBell className="text-white text-3xl" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-800 text-center group-hover:text-blue-600 transition-colors">Stay Connected</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Subscribe to get notified about new water points in your area, community updates, and helpful resources.
+                </p>
+                <div className="mt-6 text-center">
+                  <a href="#subscribe" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group/link">
+                    Get notifications
+                    <FaArrowRight className="ml-2 text-sm transition-transform group-hover/link:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-block">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 relative">
+                How Our Platform Works
+                <div className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"></div>
+              </h2>
+            </div>
+            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              A community platform connecting those who need water with those who can share, making it easier for everyone during water outages.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-10">
+            {/* Find Water Card */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="p-8">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 mb-6 transform group-hover:-translate-y-2 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-blue-500 to-indigo-600 w-16 h-16 rounded-xl flex items-center justify-center shadow-md mx-auto">
+                    <FaSearch className="text-white text-3xl" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-800 text-center group-hover:text-blue-600 transition-colors">Find Water</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Use your location or search by area to find nearby homes and water points offering access during specific times.
+                </p>
+                <div className="mt-6 text-center">
+                  <Link to="/find-water" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group/link">
+                    Find nearby water
+                    <FaArrowRight className="ml-2 text-sm transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
+            {/* Share Water Card */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="p-8">
+                <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl p-6 mb-6 transform group-hover:-translate-y-2 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-indigo-500 to-blue-600 w-16 h-16 rounded-xl flex items-center justify-center shadow-md mx-auto">
+                    <FaHandHoldingWater className="text-white text-3xl" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-800 text-center group-hover:text-blue-600 transition-colors">Share Water</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Residents with boreholes, JoJo tanks, or other water sources can volunteer to share with neighbors during their available hours.
+                </p>
+                <div className="mt-6 text-center">
+                  <Link to="/volunteer" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group/link">
+                    Register your water source
+                    <FaArrowRight className="ml-2 text-sm transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
+            {/* Stay Updated Card */}
+            <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden">
+              <div className="p-8">
+                <div className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-6 mb-6 transform group-hover:-translate-y-2 transition-transform duration-300">
+                  <div className="bg-gradient-to-br from-teal-500 to-blue-600 w-16 h-16 rounded-xl flex items-center justify-center shadow-md mx-auto">
+                    <FaBell className="text-white text-3xl" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-800 text-center group-hover:text-blue-600 transition-colors">Stay Connected</h3>
+                <p className="text-gray-600 text-center leading-relaxed">
+                  Subscribe to get notified about new water points in your area, community updates, and helpful resources.
+                </p>
+                <div className="mt-6 text-center">
+                  <a href="#subscribe" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group/link">
+                    Get notifications
+                    <FaArrowRight className="ml-2 text-sm transition-transform group-hover/link:translate-x-1" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -719,6 +974,9 @@ export default function HomePage() {
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
               </div>
             </div>
           </div>
@@ -730,23 +988,24 @@ export default function HomePage() {
         {/* Decorative Circles for the section */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100/30 rounded-full -mt-20 -mr-20"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-100/30 rounded-full -mb-32 -ml-32"></div>
-        <div className="absolute top-1/4 right-1/4 w-24 h-24 bg-indigo-200/20 rounded-full"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-teal-100/30 rounded-full animate-pulse"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-5"> {/* Changed from mb-10 to mb-5 */}
-            <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-2"> {/* Changed from mb-3 to mb-2 */}
-              Join Our Water Solidarity Network
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Join Our Community
             </h2>
-            <p className="text-blue-700 text-lg max-w-xl mx-auto">
-              Connect with neighbors and stay updated on water resources in your community.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Subscribe to get the latest updates on water resources, community events, and more.
             </p>
           </div>
-          <SubscriptionForm />
+          
+          {/* Subscription form - Centered with larger input and button */}
+          <div className="max-w-md mx-auto">
+            <SubscriptionForm />
+          </div>
         </div>
       </section>
-
-      {/* Demo Volunteers Section - New Section Added */}
-      <DemoVolunteersSection />
     </div>
   );
 }
