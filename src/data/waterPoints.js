@@ -9,7 +9,7 @@ export const waterPoints = [
     name: "Vanderbijlpark Residence",
     area: "Vanderbijlpark",
     subArea: "Vanderbijlpark SE2",
-    address: "34 Ramsbottom Street, Vanderbijlpark SE2",
+    address: "Ramsbottom Street, Vanderbijlpark SE2",
     description: "Residential home with 5000L storage tank and borehole",
     schedule: [
       { day: "Monday", times: ["08:00 - 10:00", "16:00 - 18:00"] },
@@ -36,7 +36,7 @@ export const waterPoints = [
     name: "Hoffman Street Water Point",
     area: "Vanderbijlpark",
     subArea: "Vanderbijlpark SE1",
-    address: "39 President Hoffman Street, Vanderbijlpark SE1",
+    address: "President Hoffman Street, Vanderbijlpark SE1",
     description: "Private residence with water filling station and 10000L JoJo tank",
     schedule: [
       { day: "Tuesday", times: ["07:00 - 09:00", "17:00 - 19:00"] },
@@ -62,7 +62,7 @@ export const waterPoints = [
     name: "Three Rivers Borehole",
     area: "Vereeniging",
     subArea: "Three Rivers",
-    address: "12 Nile Drive, Three Rivers",
+    address: "Nile Drive, Three Rivers",
     description: "Family home with borehole and multiple taps for quick filling",
     schedule: [
       { day: "Monday", times: ["15:00 - 19:00"] },
@@ -88,7 +88,7 @@ export const waterPoints = [
     name: "Arcon Park Water Station",
     area: "Vereeniging",
     subArea: "Arcon Park",
-    address: "7 Platinum Street, Arcon Park",
+    address: "Platinum Street, Arcon Park",
     description: "Industrial property with high-volume water supply and quick-fill system",
     schedule: [
       { day: "Monday", times: ["06:00 - 18:00"] },
@@ -116,7 +116,7 @@ export const waterPoints = [
     name: "Sasolburg Central Point",
     area: "Sasolburg",
     subArea: "Sasolburg Central",
-    address: "23 Kirchoffer Boulevard, Sasolburg",
+    address: "Kirchoffer Boulevard, Sasolburg",
     description: "Church grounds with multiple water collection points",
     schedule: [
       { day: "Tuesday", times: ["07:00 - 11:00"] },
@@ -140,7 +140,7 @@ export const waterPoints = [
     name: "Vaalpark Residence",
     area: "Sasolburg",
     subArea: "Vaalpark",
-    address: "45 Brahms Street, Vaalpark",
+    address: "Brahms Street, Vaalpark",
     description: "Private home with 7500L water storage and multiple taps",
     schedule: [
       { day: "Monday", times: ["17:00 - 19:00"] },
@@ -166,7 +166,7 @@ export const waterPoints = [
     name: "Evaton Community Center",
     area: "Evaton",
     subArea: "Evaton North",
-    address: "1242 Golden Highway, Evaton North",
+    address: "Golden Highway, Evaton North",
     description: "Community center with water distribution facility",
     schedule: [
       { day: "Monday", times: ["08:00 - 16:00"] },
@@ -194,7 +194,7 @@ export const waterPoints = [
     name: "Evaton West Relief Point",
     area: "Evaton",
     subArea: "Evaton West",
-    address: "3580 Moshoeshoe Street, Evaton West",
+    address: "Moshoeshoe Street, Evaton West",
     description: "School grounds converted to water distribution center",
     schedule: [
       { day: "Tuesday", times: ["10:00 - 15:00"] },
@@ -218,7 +218,7 @@ export const waterPoints = [
     name: "Zone 6 Water Station",
     area: "Sebokeng",
     subArea: "Zone 6",
-    address: "16453 Vilakazi Street, Sebokeng Zone 6",
+    address: "Vilakazi Street, Sebokeng Zone 6",
     description: "Local business providing free water from private borehole",
     schedule: [
       { day: "Monday", times: ["07:00 - 09:00", "16:00 - 18:00"] },
@@ -245,7 +245,7 @@ export const waterPoints = [
     name: "Zone 12 Community Point",
     area: "Sebokeng",
     subArea: "Zone 12",
-    address: "10234 Mopeli Street, Sebokeng Zone 12",
+    address: "Mopeli Street, Sebokeng Zone 12",
     description: "Community hall with multiple water tanks and covered waiting area",
     schedule: [
       { day: "Tuesday", times: ["09:00 - 14:00"] },
@@ -271,7 +271,7 @@ export const waterPoints = [
     name: "Duncanville Residence",
     area: "Vereeniging",
     subArea: "Duncanville",
-    address: "7 Scott Street, Duncanville",
+    address: "Scott Street, Duncanville",
     description: "Private home with large borehole system and multiple filling points",
     schedule: [
       { day: "Monday", times: ["07:30 - 10:30"] },
@@ -297,7 +297,7 @@ export const waterPoints = [
     name: "Peacehaven School",
     area: "Vereeniging",
     subArea: "Peacehaven",
-    address: "22 Jan Hofmeyr Road, Peacehaven",
+    address: "Jan Hofmeyr Road, Peacehaven",
     description: "School premises offering water from multiple boreholes",
     schedule: [
       { day: "Monday", times: ["14:00 - 18:00"] },
@@ -323,7 +323,7 @@ export const waterPoints = [
     name: "Vanderbijlpark CW Filling Station",
     area: "Vanderbijlpark",
     subArea: "Vanderbijlpark CW",
-    address: "17 Edison Boulevard, Vanderbijlpark CW",
+    address: "Edison Boulevard, Vanderbijlpark CW",
     description: "Service station with dedicated water distribution system",
     schedule: [
       { day: "Monday", times: ["06:00 - 20:00"] },
@@ -355,7 +355,7 @@ export const waterPoints = [
     name: "Roodia Water Point",
     area: "Sasolburg",
     subArea: "Roodia",
-    address: "5 Riethaan Street, Roodia",
+    address: "Riethaan Street, Roodia",
     description: "Private residence with high-output borehole system",
     schedule: [
       { day: "Tuesday", times: ["16:00 - 19:00"] },
@@ -380,7 +380,7 @@ export const waterPoints = [
     name: "Zone 14 Community Borehole",
     area: "Sebokeng",
     subArea: "Zone 14",
-    address: "1375 Moshoeshoe Road, Sebokeng Zone 14",
+    address: "Moshoeshoe Road, Sebokeng Zone 14",
     description: "Community initiative providing water from shared borehole",
     schedule: [
       { day: "Monday", times: ["07:00 - 12:00"] },

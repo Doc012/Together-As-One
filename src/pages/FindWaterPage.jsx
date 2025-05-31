@@ -44,7 +44,7 @@ const demoWaterPoints = [
     name: "Villa Gardens Residence",
     area: "Vanderbijlpark",
     subArea: "Villa Gardens",
-    address: "42 Acacia Lane, Vanderbijlpark",
+    address: "Acacia Lane, Vanderbijlpark",
     description: "Family home with 5000L storage tank and clean borehole water. Multiple taps available for filling containers.",
     schedule: [
       { day: "Tuesday", times: ["07:00 - 09:00"] },
@@ -69,7 +69,7 @@ const demoWaterPoints = [
     name: "Duncanville Family Home",
     area: "Vereeniging",
     subArea: "Duncanville",
-    address: "15 Maple Road, Duncanville",
+    address: "Maple Road, Duncanville",
     description: "Residential property with borehole and multiple filling points. Covered waiting area available.",
     schedule: [
       { day: "Monday", times: ["16:00 - 18:00"] },
@@ -94,7 +94,7 @@ const demoWaterPoints = [
     name: "Riverside Borehole Share",
     area: "Three Rivers",
     subArea: "Riverside",
-    address: "24 River View Drive, Three Rivers",
+    address: "River View Drive, Three Rivers",
     description: "Modern home with high-capacity borehole system and covered waiting area. Multiple taps for quick filling.",
     schedule: [
       { day: "Monday", times: ["07:00 - 09:00"] },
@@ -1327,8 +1327,8 @@ const FindWaterPage = () => {
                 <div className="mt-8 flex flex-col sm:flex-row justify-between gap-4">
                   <a
                     href={selectedWaterPoint && selectedWaterPoint.location && selectedWaterPoint.location.latitude && selectedWaterPoint.location.longitude
-                      ? `https://www.openstreetmap.org/directions?from=&to=${selectedWaterPoint.location.latitude}%2C${selectedWaterPoint.location.longitude}`
-                      : `https://www.openstreetmap.org/search?query=${encodeURIComponent(selectedWaterPoint.address || selectedWaterPoint.name || '')}`
+                      ? `https://www.google.com/maps/search/?api=1&query=${selectedWaterPoint.location.latitude},${selectedWaterPoint.location.longitude}`
+                      : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedWaterPoint.address || selectedWaterPoint.name || '')}`
                     }
                     target="_blank"
                     rel="noopener noreferrer"
