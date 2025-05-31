@@ -12,7 +12,8 @@ import {
   FaRegLightbulb,
   FaChevronDown,
   FaChevronUp,
-  FaSearch
+  FaSearch,
+  FaExclamationCircle
 } from 'react-icons/fa';
 
 const CommunitiesPage = () => {
@@ -20,138 +21,141 @@ const CommunitiesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedSuccess, setExpandedSuccess] = useState(null);
 
-  // Example community data
+  // Planned communities - labeled as examples/goals
   const communities = [
     {
       id: 'emfuleni',
       name: 'Emfuleni',
       region: 'gauteng',
-      description: 'One of the first communities to join the Together As One initiative, Emfuleni residents have created a neighborhood-wide network of over 35 water sharing points.',
+      description: 'Potential first community to join the Together As One initiative. We envision residents creating a neighborhood-wide network of water sharing points.',
       stats: {
-        sharingPoints: 35,
-        peopleHelped: '1,200+',
-        waterShared: '15,000+ liters',
+        sharingPoints: 0,
+        peopleHelped: '0',
+        waterShared: '0 liters',
       },
       image: 'https://cdn.golflux.com/wp-content/uploads/2024/05/Emfuleni-Golf-Estate-1.jpg',
-      facebookUrl: 'https://www.facebook.com/groups/emfuleniwatersharing'
+      facebookUrl: 'https://www.facebook.com/profile.php?id=61577065883332'
     },
     {
       id: 'tshwane',
       name: 'Tshwane',
       region: 'gauteng',
-      description: 'The Tshwane community focuses on both water sharing and educational workshops on water conservation, helping neighbors save and share water efficiently.',
+      description: 'We aim to build a Tshwane community focused on both water sharing and educational workshops on water conservation, helping neighbors save and share water efficiently.',
       stats: {
-        sharingPoints: 28,
-        peopleHelped: '950+',
-        waterShared: '12,000+ liters',
+        sharingPoints: 0,
+        peopleHelped: '0',
+        waterShared: '0 liters',
       },
       image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c291dGglMjBhZnJpY2FuJTIwY29tbXVuaXR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-      facebookUrl: 'https://www.facebook.com/groups/tshwanewaterresources'
+      facebookUrl: 'https://www.facebook.com/profile.php?id=61577065883332'
     },
     {
       id: 'capetown',
       name: 'Cape Town',
       region: 'western-cape',
-      description: 'After experiencing severe drought conditions, Cape Town residents have become experts in water conservation and sharing, creating a resilient community water network.',
+      description: 'After experiencing severe drought conditions, Cape Town could benefit from a community water sharing network. We hope to connect those with boreholes to neighbors in need.',
       stats: {
-        sharingPoints: 42,
-        peopleHelped: '1,800+',
-        waterShared: '22,000+ liters',
+        sharingPoints: 0,
+        peopleHelped: '0',
+        waterShared: '0 liters',
       },
       image: 'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhcGUlMjB0b3duJTIwY29tbXVuaXR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-      facebookUrl: 'https://www.facebook.com/groups/capetownwaterwatch'
+      facebookUrl: 'https://www.facebook.com/profile.php?id=61577065883332'
     },
     {
       id: 'stellenbosch',
       name: 'Stellenbosch',
       region: 'western-cape',
-      description: 'Stellenbosch has implemented an innovative approach combining rainwater harvesting systems with community sharing points, maximizing water collection during rainy seasons.',
+      description: 'We envision Stellenbosch implementing an innovative approach combining rainwater harvesting systems with community sharing points, maximizing water collection during rainy seasons.',
       stats: {
-        sharingPoints: 24,
-        peopleHelped: '780+',
-        waterShared: '9,500+ liters',
+        sharingPoints: 0,
+        peopleHelped: '0',
+        waterShared: '0 liters',
       },
       image: 'https://images.unsplash.com/photo-1598971861713-54ad16a7e72e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3RlbGxlbmJvc2NofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-      facebookUrl: 'https://www.facebook.com/groups/stellenboschcommunitywater'
+      facebookUrl: 'https://www.facebook.com/profile.php?id=61577065883332'
     },
     {
       id: 'durban',
       name: 'Durban',
       region: 'kwazulu-natal',
-      description: 'The Durban community has focused on coastal water conservation, combining traditional methods with modern technology to ensure water security during outages.',
+      description: 'The future Durban community could focus on coastal water conservation, combining traditional methods with modern technology to ensure water security during outages.',
       stats: {
-        sharingPoints: 31,
-        peopleHelped: '1,050+',
-        waterShared: '13,200+ liters',
+        sharingPoints: 0,
+        peopleHelped: '0',
+        waterShared: '0 liters',
       },
       image: 'https://content.r9cdn.net/rimg/dimg/50/22/266b6677-city-33744-167795c3051.jpg?width=1200&height=630&xhint=1020&yhint=2273&crop=true',
-      facebookUrl: 'https://www.facebook.com/groups/durbanwaternetwork'
+      facebookUrl: 'https://www.facebook.com/profile.php?id=61577065883332'
     },
     {
       id: 'pietermaritzburg',
       name: 'Pietermaritzburg',
       region: 'kwazulu-natal',
-      description: 'Pietermaritzburg residents have created a volunteer network that not only shares water but also helps with water delivery to elderly and disabled community members.',
+      description: 'We hope to see Pietermaritzburg create a volunteer network that not only shares water but also helps with water delivery to elderly and disabled community members.',
       stats: {
-        sharingPoints: 22,
-        peopleHelped: '850+',
-        waterShared: '11,000+ liters',
+        sharingPoints: 0,
+        peopleHelped: '0',
+        waterShared: '0 liters',
       },
-      image: 'https://images.unsplash.com/photo-1563299796-17596ed6b017?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c291dGglMjBhZnJpY2FuJTIwdG93bnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60'
+      image: 'https://images.unsplash.com/photo-1563299796-17596ed6b017?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c291dGglMjBhZnJpY2FuJTIwdG93bnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+      facebookUrl: 'https://www.facebook.com/profile.php?id=61577065883332'
     },
     {
       id: 'eastlondon',
       name: 'East London',
       region: 'eastern-cape',
-      description: 'East London has developed a comprehensive community water sharing network that combines borehole sharing with municipal collection points, ensuring wide coverage.',
+      description: 'East London could develop a comprehensive community water sharing network that combines borehole sharing with municipal collection points, ensuring wide coverage.',
       stats: {
-        sharingPoints: 26,
-        peopleHelped: '920+',
-        waterShared: '10,500+ liters',
+        sharingPoints: 0,
+        peopleHelped: '0',
+        waterShared: '0 liters',
       },
-      image: 'https://i.pinimg.com/originals/f3/b8/4e/f3b84eddef1fc383fb1f2958b2369e52.jpg'
+      image: 'https://i.pinimg.com/originals/f3/b8/4e/f3b84eddef1fc383fb1f2958b2369e52.jpg',
+      facebookUrl: 'https://www.facebook.com/profile.php?id=61577065883332'
     },
     {
       id: 'bloemfontein',
       name: 'Bloemfontein',
       region: 'free-state',
-      description: 'Bloemfontein community members have implemented a unique scheduling system that ensures fair water distribution during shortages, becoming a model for other communities.',
+      description: 'We envision Bloemfontein community members implementing a unique scheduling system that ensures fair water distribution during shortages, becoming a model for other communities.',
       stats: {
-        sharingPoints: 23,
-        peopleHelped: '780+',
-        waterShared: '9,800+ liters',
+        sharingPoints: 0,
+        peopleHelped: '0',
+        waterShared: '0 liters',
       },
-      image: 'https://media.istockphoto.com/id/2187463985/photo/hoffman-square-and-the-old-post-office.jpg?s=612x612&w=0&k=20&c=0zDQGUoN5etwFPhFfFNt-3w_OM_wsRTPNixdgLOu53E='
+      image: 'https://media.istockphoto.com/id/2187463985/photo/hoffman-square-and-the-old-post-office.jpg?s=612x612&w=0&k=20&c=0zDQGUoN5etwFPhFfFNt-3w_OM_wsRTPNixdgLOu53E=',
+      facebookUrl: 'https://www.facebook.com/profile.php?id=61577065883332'
     },
   ];
 
-  // Success stories data
+  // Vision-based success stories rather than actual ones
   const successStories = [
     {
       id: 'story1',
-      title: 'Emfuleni 2023 Water Crisis Response',
+      title: 'Example: Emfuleni Water Crisis Response',
       community: 'Emfuleni',
-      description: 'When municipal water outages lasted for over two weeks, the Emfuleni community mobilized 35 private borehole owners to create a neighborhood water sharing network. Through the Together As One platform, they coordinated collection times and helped over 1,200 families access clean water for essential needs.',
-      impact: 'Provided water access to 1,200+ households during a critical 15-day municipal outage',
-      lessons: 'Early registration of water providers before crisis hits; clear communication about collection times; volunteer coordinators for each street',
+      description: 'This is a potential scenario: When municipal water outages last for over two weeks, communities like Emfuleni could mobilize private borehole owners to create a neighborhood water sharing network. Through platforms like Together As One, they could coordinate collection times and help families access clean water for essential needs.',
+      impact: 'Potential impact: Providing water access to 1,200+ households during a critical municipal outage',
+      lessons: 'Key strategies: Early registration of water providers before crisis hits; clear communication about collection times; volunteer coordinators for each street',
       image: 'https://www.eskom.co.za/wp-content/uploads/2021/10/Township.jpg'
     },
     {
       id: 'story2',
-      title: 'Cape Town Day Zero Prevention',
+      title: 'Example: Cape Town Day Zero Prevention',
       community: 'Cape Town',
-      description: 'Facing potential "Day Zero" when municipal water would be cut off, Cape Town residents created a community-wide water conservation and sharing program. By connecting those with boreholes to neighbors in need, they significantly reduced pressure on municipal supplies during critical shortage periods.',
-      impact: 'Reduced community water consumption by 40% while ensuring all residents had access to minimum required water',
-      lessons: 'Combining conservation education with water sharing; creating neighborhood water collection hubs; implementing fair usage guidelines',
+      description: 'Conceptual scenario: Facing potential "Day Zero" when municipal water would be cut off, Cape Town residents could create a community-wide water conservation and sharing program. By connecting those with boreholes to neighbors in need, they could significantly reduce pressure on municipal supplies during critical shortage periods.',
+      impact: 'Potential impact: Reducing community water consumption by 40% while ensuring all residents have access to minimum required water',
+      lessons: 'Key strategies: Combining conservation education with water sharing; creating neighborhood water collection hubs; implementing fair usage guidelines',
       image: 'https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2F0ZXIlMjBzaGFyaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
     },
     {
       id: 'story3',
-      title: 'Durban Senior Citizen Water Support',
+      title: 'Example: Senior Citizen Water Support',
       community: 'Durban',
-      description: 'In Durban, community members noticed that elderly residents struggled to collect water during outages. They formed a volunteer delivery network using the Together As One platform to identify seniors in need and coordinate water delivery to their homes.',
-      impact: 'Ensured water access for 200+ elderly and disabled residents who could not collect water themselves',
-      lessons: 'Creating special services for vulnerable community members; coordinating volunteers through online scheduling; using bicycles and small vehicles for delivery',
+      description: 'Vision scenario: In communities like Durban, members could notice that elderly residents struggle to collect water during outages. They could form a volunteer delivery network using platforms like Together As One to identify seniors in need and coordinate water delivery to their homes.',
+      impact: 'Potential impact: Ensuring water access for elderly and disabled residents who cannot collect water themselves',
+      lessons: 'Key strategies: Creating special services for vulnerable community members; coordinating volunteers through online scheduling; using bicycles and small vehicles for delivery',
       image: 'https://images.unsplash.com/photo-1594398901394-4e34939a4fd0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8d2F0ZXIlMjBoZWxwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
     },
   ];
@@ -228,7 +232,7 @@ const CommunitiesPage = () => {
               Communities Working Together
             </h1>
             <p className="text-lg md:text-xl text-blue-700 max-w-3xl mx-auto animate-fade-in-up animation-delay-200">
-              Discover how communities across South Africa are sharing water resources and building resilience
+              Our vision for how communities across South Africa can share water resources and build resilience
             </p>
           </div>
         </div>
@@ -236,6 +240,20 @@ const CommunitiesPage = () => {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Platform Status Alert */}
+        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8 rounded-md">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <FaExclamationCircle className="h-5 w-5 text-blue-400" />
+            </div>
+            <div className="ml-3">
+              <p className="text-sm text-blue-700">
+                <span className="font-bold">Platform Status:</span> Together As One is currently in development. The communities and stories shown below represent our vision for the platform, not existing networks. We're actively seeking early adopters to start building these communities.
+              </p>
+            </div>
+          </div>
+        </div>
+        
         {/* Communities Overview */}
         <div className="bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 mb-12">
           <div className="p-6 md:p-8">
@@ -247,31 +265,44 @@ const CommunitiesPage = () => {
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-gray-800 mb-3">Water Sharing Communities</h2>
                 <p className="text-gray-600 mb-4">
-                  Across South Africa, communities are coming together to share water resources during shortages and outages. 
-                  Through the Together As One platform, neighborhoods are building resilience and ensuring everyone has 
-                  access to this essential resource. Explore how different communities are making a difference:
+                  Our vision is for communities across South Africa to come together to share water resources during shortages and outages. 
+                  Through the Together As One platform, neighborhoods can build resilience and ensure everyone has 
+                  access to this essential resource. Below we showcase what this could look like:
                 </p>
                 
                 <div className="grid grid-cols-3 md:grid-cols-5 gap-4 text-center">
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-blue-700">{communities.length}</div>
-                    <div className="text-sm text-gray-600">Communities</div>
-                  </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-blue-700">
-                      {communities.reduce((sum, community) => sum + community.stats.sharingPoints, 0)}
+                  <div className="bg-blue-50 rounded-lg p-4 relative">
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+                      Current
                     </div>
+                    <div className="text-2xl font-bold text-blue-700">0</div>
+                    <div className="text-sm text-gray-600">Active Communities</div>
+                  </div>
+                  <div className="bg-blue-50 rounded-lg p-4 relative">
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-blue-400 text-white text-xs font-medium px-2 py-0.5 rounded-full">
+                      Current
+                    </div>
+                    <div className="text-2xl font-bold text-blue-700">0</div>
                     <div className="text-sm text-gray-600">Water Points</div>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-blue-700">5</div>
+                  <div className="bg-blue-50 rounded-lg p-4 relative">
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                      Goal
+                    </div>
+                    <div className="text-2xl font-bold text-blue-700">9</div>
                     <div className="text-sm text-gray-600">Provinces</div>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-blue-50 rounded-lg p-4 relative">
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                      Goal
+                    </div>
                     <div className="text-2xl font-bold text-blue-700">8,000+</div>
                     <div className="text-sm text-gray-600">People Helped</div>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
+                  <div className="bg-blue-50 rounded-lg p-4 relative">
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                      Goal
+                    </div>
                     <div className="text-2xl font-bold text-blue-700">100,000+</div>
                     <div className="text-sm text-gray-600">Liters Shared</div>
                   </div>
@@ -282,7 +313,7 @@ const CommunitiesPage = () => {
         </div>
         
         {/* Search and Filter */}
-        <div className="mb-8">
+        <div className="mb-2">
           <div className="flex flex-col md:flex-row gap-4 justify-between">
             <div className="flex-1">
               <div className="relative">
@@ -292,7 +323,7 @@ const CommunitiesPage = () => {
                 <input
                   type="text"
                   className="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="Search communities..."
+                  placeholder="Search potential communities..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -317,6 +348,20 @@ const CommunitiesPage = () => {
           </div>
         </div>
         
+        {/* Potential Communities Notice */}
+        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mb-6">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <FaRegLightbulb className="h-5 w-5 text-yellow-500" />
+            </div>
+            <div className="ml-3">
+              <p className="text-sm text-yellow-700">
+                <span className="font-bold">Note:</span> The following are example communities we aim to establish. These are not yet active water sharing networks but represent areas where we hope to build communities. Join us to help make these a reality!
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Communities Grid */}
         {filteredCommunities.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
@@ -332,6 +377,9 @@ const CommunitiesPage = () => {
                       e.target.src = 'https://via.placeholder.com/500x300?text=Community+Image';
                     }}
                   />
+                  <div className="absolute top-2 right-2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    Planned
+                  </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-2">
@@ -345,26 +393,32 @@ const CommunitiesPage = () => {
                   
                   <div className="grid grid-cols-3 gap-2 mb-4">
                     <div className="bg-blue-50 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-blue-700">{community.stats.sharingPoints}</div>
+                      <div className="text-lg font-bold text-blue-700">
+                        <span className="text-xs text-gray-500">Target:</span> {community.id === 'emfuleni' ? '35' : community.id === 'capetown' ? '42' : '20+'}
+                      </div>
                       <div className="text-xs text-gray-600">Water Points</div>
                     </div>
                     <div className="bg-blue-50 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-blue-700">{community.stats.peopleHelped}</div>
+                      <div className="text-lg font-bold text-blue-700">
+                        <span className="text-xs text-gray-500">Goal:</span> {community.id === 'emfuleni' ? '1,200+' : community.id === 'capetown' ? '1,800+' : '800+'}
+                      </div>
                       <div className="text-xs text-gray-600">People Helped</div>
                     </div>
                     <div className="bg-blue-50 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-blue-700">{community.stats.waterShared}</div>
-                      <div className="text-xs text-gray-600">Water Shared</div>
+                      <div className="text-lg font-bold text-blue-700">
+                        <span className="text-xs text-gray-500">Goal:</span> {community.id === 'emfuleni' ? '15k+' : community.id === 'capetown' ? '22k+' : '10k+'}
+                      </div>
+                      <div className="text-xs text-gray-600">Liters</div>
                     </div>
                   </div>
                   
                   <div className="flex flex-col sm:flex-row justify-between gap-2 mb-4">
                     <Link 
-                      to={`/find-water?area=${community.name}`}
+                      to="/volunteer"
                       className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors"
                     >
                       <FaWater className="mr-1" />
-                      Find water in {community.name}
+                      Help start in {community.name}
                     </Link>
                     
                     {community.facebookUrl && (
@@ -377,7 +431,7 @@ const CommunitiesPage = () => {
                         <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
                         </svg>
-                        Join Community Group
+                        Join Facebook Group
                       </a>
                     )}
                   </div>
@@ -392,7 +446,7 @@ const CommunitiesPage = () => {
             </div>
             <h3 className="text-xl font-semibold text-gray-800 mb-3">No Communities Found</h3>
             <p className="text-gray-600 mb-6 max-w-md mx-auto">
-              We couldn't find any communities matching your search criteria. Please try different search terms or filters.
+              We couldn't find any potential communities matching your search criteria. Please try different search terms or filters.
             </p>
             
             <button 
@@ -410,7 +464,20 @@ const CommunitiesPage = () => {
             <div className="bg-green-100 p-3 rounded-full mr-3">
               <FaSeedling className="text-green-600" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-800">Community Success Stories</h2>
+            <h2 className="text-2xl font-bold text-gray-800">Potential Success Stories</h2>
+          </div>
+
+          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mb-6">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <FaRegLightbulb className="h-5 w-5 text-yellow-500" />
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-yellow-700">
+                  <span className="font-bold">Note:</span> The following are example scenarios that illustrate how communities could utilize our platform. These stories are conceptual and show what's possible when neighbors work together.
+                </p>
+              </div>
+            </div>
           </div>
           
           <div className="space-y-6">
@@ -420,7 +487,7 @@ const CommunitiesPage = () => {
                 className="bg-white rounded-xl shadow-md overflow-hidden border border-blue-100"
               >
                 <div className="md:flex">
-                  <div className="md:w-1/3 h-64 md:h-auto">
+                  <div className="md:w-1/3 h-64 md:h-auto relative">
                     <img 
                       src={story.image} 
                       alt={story.title} 
@@ -430,12 +497,15 @@ const CommunitiesPage = () => {
                         e.target.src = 'https://via.placeholder.com/500x300?text=Success+Story';
                       }}
                     />
+                    <div className="absolute top-2 right-2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                      Example
+                    </div>
                   </div>
                   
                   <div className="p-6 md:w-2/3">
                     <div className="mb-4">
                       <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">
-                        Success Story
+                        Potential Scenario
                       </span>
                       <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
                         {story.community}
@@ -451,12 +521,12 @@ const CommunitiesPage = () => {
                     {expandedSuccess === story.id && (
                       <div className="space-y-4 mt-4 mb-4">
                         <div className="bg-blue-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-blue-800 mb-1">Impact</h4>
+                          <h4 className="font-semibold text-blue-800 mb-1">Potential Impact</h4>
                           <p className="text-blue-700">{story.impact}</p>
                         </div>
                         
                         <div className="bg-green-50 p-4 rounded-lg">
-                          <h4 className="font-semibold text-green-800 mb-1">Key Lessons</h4>
+                          <h4 className="font-semibold text-green-800 mb-1">Key Strategies</h4>
                           <p className="text-green-700">{story.lessons}</p>
                         </div>
                       </div>
@@ -490,8 +560,8 @@ const CommunitiesPage = () => {
               <div className="flex-1">
                 <h2 className="text-2xl font-bold text-gray-800 mb-3">Start In Your Community</h2>
                 <p className="text-gray-600 mb-6">
-                  Your community can be part of this movement too. Whether you're starting from scratch or expanding existing efforts,
-                  we can help you establish a water sharing network in your neighborhood.
+                  Be among the first to bring Together As One to your community. Whether you're starting from scratch or have informal water sharing already happening,
+                  we can help you establish a structured water sharing network in your neighborhood.
                 </p>
                 
                 <div className="grid md:grid-cols-3 gap-4 mb-6">
@@ -544,7 +614,7 @@ const CommunitiesPage = () => {
                     to="/volunteer"
                     className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md flex items-center justify-center"
                   >
-                    Register as a Provider
+                    Become a Founding Provider
                   </Link>
                   
                   <Link
@@ -569,11 +639,11 @@ const CommunitiesPage = () => {
                   <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-800">Join Local Facebook Groups</h3>
+              <h3 className="text-xl font-bold text-gray-800">Join Our Facebook Group</h3>
             </div>
             
             <p className="text-gray-600 mb-4">
-              Each community has established a dedicated Facebook group for local residents to:
+              We've created a central Facebook group for everyone interested in water sharing. Join us to:
             </p>
             
             <div className="grid md:grid-cols-3 gap-4">
@@ -582,7 +652,7 @@ const CommunitiesPage = () => {
                   <div className="bg-blue-100 p-1 rounded-full mt-1 mr-2">
                     <FaCheck className="text-blue-600 text-xs" />
                   </div>
-                  <p className="text-gray-700 text-sm">Get real-time updates about local water availability</p>
+                  <p className="text-gray-700 text-sm">Connect with others interested in starting community water sharing</p>
                 </div>
               </div>
               
@@ -591,7 +661,7 @@ const CommunitiesPage = () => {
                   <div className="bg-blue-100 p-1 rounded-full mt-1 mr-2">
                     <FaCheck className="text-blue-600 text-xs" />
                   </div>
-                  <p className="text-gray-700 text-sm">Coordinate urgent water needs during outages</p>
+                  <p className="text-gray-700 text-sm">Learn about water sharing best practices and strategies</p>
                 </div>
               </div>
               
@@ -600,23 +670,36 @@ const CommunitiesPage = () => {
                   <div className="bg-blue-100 p-1 rounded-full mt-1 mr-2">
                     <FaCheck className="text-blue-600 text-xs" />
                   </div>
-                  <p className="text-gray-700 text-sm">Share local water conservation tips and experiences</p>
+                  <p className="text-gray-700 text-sm">Be first to know when we launch in your area</p>
                 </div>
               </div>
             </div>
             
-            <div className="mt-4 text-sm text-blue-700">
-              <strong>Note:</strong> These groups are strictly for residents of each specific community to ensure relevant local communication.
+            <div className="mt-6 flex justify-center">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61577065883332" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-blue-600 text-white py-2 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md"
+              >
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
+                </svg>
+                Join the Facebook Group
+              </a>
             </div>
           </div>
         </div>
         
-        {/* Testimonials Section */}
+        {/* Vision Testimonials Section */}
         <div className="mb-16 bg-blue-600 rounded-xl shadow-xl overflow-hidden relative">
           <div className="absolute inset-0 bg-blue-700 opacity-10 pattern-dots"></div>
           
           <div className="p-8 md:p-10 relative z-10">
-            <h2 className="text-2xl font-bold text-white mb-8 text-center">Community Voices</h2>
+            <h2 className="text-2xl font-bold text-white mb-2 text-center">Our Vision: Community Voices</h2>
+            <p className="text-center text-blue-100 mb-8 max-w-2xl mx-auto text-sm">
+              These example testimonials represent the voices we hope to hear once our communities are established. Help us make these stories a reality.
+            </p>
             
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white/90 backdrop-blur-sm p-5 rounded-lg shadow-md">
@@ -628,8 +711,8 @@ const CommunitiesPage = () => {
                     <span className="text-blue-600 font-semibold">SN</span>
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Sarah N.</p>
-                    <p className="text-sm text-gray-500">Community Coordinator, Emfuleni</p>
+                    <p className="font-medium text-gray-800">Potential feedback</p>
+                    <p className="text-sm text-gray-500">Future Community Coordinator</p>
                   </div>
                 </div>
               </div>
@@ -643,8 +726,8 @@ const CommunitiesPage = () => {
                     <span className="text-blue-600 font-semibold">JM</span>
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">John M.</p>
-                    <p className="text-sm text-gray-500">Water Provider, Cape Town</p>
+                    <p className="font-medium text-gray-800">Potential feedback</p>
+                    <p className="text-sm text-gray-500">Future Water Provider</p>
                   </div>
                 </div>
               </div>
@@ -658,8 +741,8 @@ const CommunitiesPage = () => {
                     <span className="text-blue-600 font-semibold">TK</span>
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">Thabo K.</p>
-                    <p className="text-sm text-gray-500">Resident, Tshwane</p>
+                    <p className="font-medium text-gray-800">Potential feedback</p>
+                    <p className="text-sm text-gray-500">Future Community Member</p>
                   </div>
                 </div>
               </div>
@@ -670,22 +753,22 @@ const CommunitiesPage = () => {
         {/* Call-to-Action Section */}
         <div className="bg-blue-100 rounded-xl shadow-md p-8 text-center relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-2xl font-bold text-blue-800 mb-4">Join the Movement Today</h2>
+            <h2 className="text-2xl font-bold text-blue-800 mb-4">Be a Founding Member</h2>
             <p className="text-blue-700 mb-6 max-w-2xl mx-auto">
-              Whether you have water to share or need to find water during outages, you can be part of building a more resilient community.
+              Help us build these water sharing communities from the ground up. Whether you have water to share or want to organize your neighborhood, you can be part of creating a more resilient South Africa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/find-water"
+                to="/contact"
                 className="bg-white text-blue-600 py-3 px-8 rounded-lg font-medium border border-blue-200 hover:bg-blue-50 transition-colors shadow-sm"
               >
-                Find Water Near You
+                Contact Us
               </Link>
               <Link
                 to="/volunteer"
                 className="bg-blue-600 text-white py-3 px-8 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md"
               >
-                Share Your Water
+                Become a Founding Member
               </Link>
             </div>
           </div>

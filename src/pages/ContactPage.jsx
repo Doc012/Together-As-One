@@ -36,7 +36,7 @@ const ContactPage = () => {
   const [copySuccess, setCopySuccess] = useState(false);
   
   // Contact email where messages should be sent
-  const contactEmail = "info@togetherasone.org.za";
+  const contactEmail = "taosa.info@gmail.com";
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -223,16 +223,16 @@ ${emailContent}`;
             
             <div className="space-y-2">
               <a 
-                href="mailto:info@togetherasone.org.za" 
+                href="mailto:taosa.info@gmail.com" 
                 className="block text-blue-600 hover:text-blue-700 transition-colors"
               >
-                info@togetherasone.org.za
+                taosa.info@gmail.com
               </a>
               <a 
-                href="mailto:support@togetherasone.org.za" 
+                href="mailto:taosa.help@gmail.com" 
                 className="block text-blue-600 hover:text-blue-700 transition-colors"
               >
-                support@togetherasone.org.za
+                taosa.help@gmail.com
               </a>
             </div>
           </div>
@@ -247,24 +247,24 @@ ${emailContent}`;
             </div>
             
             <p className="text-gray-600 mb-4">
-              Available Monday to Friday, 8:00 AM - 5:00 PM (South African Time)
+              Our phone support channels are being established.
             </p>
             
             <div className="space-y-2">
-              <a 
-                href="tel:+27123456789" 
-                className="block text-gray-800 hover:text-blue-600 transition-colors"
-              >
-                +27 12 345 6789
-              </a>
-              <a 
-                href="https://wa.me/27123456789" 
-                className="flex items-center text-green-600 hover:text-green-700 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaWhatsapp className="mr-2" /> WhatsApp Support
-              </a>
+              <div className="flex items-center text-blue-600">
+                <FaPhone className="mr-2" /> 
+                <span>Phone Support Coming Soon</span>
+                <span className="ml-2 text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
+                  In Progress
+                </span>
+              </div>
+              <div className="flex items-center text-amber-600">
+                <FaWhatsapp className="mr-2" /> 
+                <span>WhatsApp Support Coming Soon</span>
+                <span className="ml-2 text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">
+                  In Progress
+                </span>
+              </div>
             </div>
           </div>
           
@@ -283,7 +283,7 @@ ${emailContent}`;
             
             <div className="flex space-x-4">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/profile.php?id=61577065883332" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-blue-100 hover:bg-blue-200 text-blue-600 p-3 rounded-full transition-colors"
@@ -292,16 +292,16 @@ ${emailContent}`;
                 <span className="sr-only">Facebook</span>
               </a>
               <a 
-                href="https://twitter.com" 
+                href="https://whatsapp.com/channel/0029Vb6AUXbGk1FsEBV3Gw1r" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-blue-100 hover:bg-blue-200 text-blue-500 p-3 rounded-full transition-colors"
+                className="bg-green-100 hover:bg-green-200 text-green-600 p-3 rounded-full transition-colors"
               >
-                <FaTwitter size={20} />
-                <span className="sr-only">Twitter</span>
+                <FaWhatsapp size={20} />
+                <span className="sr-only">WhatsApp Channel</span>
               </a>
               <a 
-                href="https://maps.google.com" 
+                href="https://maps.google.com/?q=Emfuleni+Local+Municipality,+Gauteng,+South+Africa" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-red-100 hover:bg-red-200 text-red-500 p-3 rounded-full transition-colors"
@@ -584,20 +584,20 @@ ${emailContent}`;
               <div className="grid md:grid-cols-3 gap-4 mb-4">
                 <div className="bg-white p-4 rounded-lg shadow-sm">
                   <h4 className="font-semibold text-gray-800 mb-1">Emfuleni Municipality</h4>
-                  <a href="tel:0861754311" className="text-red-600 hover:text-red-700 transition-colors">
-                    0861 754 311
+                  <a href="tel:0169505000" className="text-red-600 hover:text-red-700 transition-colors">
+                    +27 16 950 5000
                   </a>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm">
                   <h4 className="font-semibold text-gray-800 mb-1">Johannesburg Water</h4>
-                  <a href="tel:0113755555" className="text-red-600 hover:text-red-700 transition-colors">
-                    011 375 5555
+                  <a href="tel:0116881400" className="text-red-600 hover:text-red-700 transition-colors">
+                    +27 (0) 11 688 1400
                   </a>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm">
                   <h4 className="font-semibold text-gray-800 mb-1">Rand Water</h4>
-                  <a href="tel:0860106456" className="text-red-600 hover:text-red-700 transition-colors">
-                    0860 10 10 60
+                  <a href="tel:0116820911" className="text-red-600 hover:text-red-700 transition-colors">
+                    +27 (0)11 682 0911
                   </a>
                 </div>
               </div>
@@ -619,7 +619,7 @@ ${emailContent}`;
             <div>
               <h2 className="text-xl font-bold text-gray-800 mb-2">Media Inquiries</h2>
               <p className="text-gray-700 mb-4">
-                Journalists and media representatives seeking information about Together As One, our community impact, or water sharing initiatives can contact our media relations team at <a href="mailto:media@togetherasone.org.za" className="text-blue-600 hover:text-blue-800 font-medium">media@togetherasone.org.za</a>.
+                Journalists and media representatives seeking information about Together As One, our community impact, or water sharing initiatives can contact our media relations team at <a href="mailto:taosa.info@gmail.com" className="text-blue-600 hover:text-blue-800 font-medium">taosa.info@gmail.com</a>.
               </p>
             </div>
           </div>

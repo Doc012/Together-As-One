@@ -9,6 +9,7 @@ import { MdLocationOn, MdWaterDrop, MdOutlineWaterDrop } from 'react-icons/md';
 import { IoWaterOutline } from 'react-icons/io5';
 import SubscriptionForm from '../components/features/SubscriptionForm';
 import Slider from '../components/ui/Slider';
+import DemoVolunteersSection from '../components/DemoVolunteersSection';
 
 export default function HomePage() {
   const [userLocation, setUserLocation] = useState(null);
@@ -533,7 +534,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section - Enhanced with a lighter background */}
+      {/* Stats Section - Modified to show aspirational/demo values */}
       <section className="py-16 bg-gradient-to-r from-blue-500/90 to-indigo-500/90 relative overflow-hidden">
         {/* Decorative elements with increased transparency */}
         <div className="absolute inset-0 overflow-hidden opacity-15">
@@ -543,33 +544,71 @@ export default function HomePage() {
           <div className="absolute bottom-1/3 left-1/4 w-24 h-24 bg-white rounded-full"></div>
           
           {/* Water droplet patterns */}
-          <div className="absolute top-1/2 left-1/3 w-20 h-20 bg-white rounded-b-full rotate-45"></div>
+          {/* <div className="absolute top-1/2 left-1/3 w-20 h-20 bg-white rounded-b-full rotate-45"></div> */}
           <div className="absolute bottom-1/4 right-1/3 w-16 h-16 bg-white rounded-b-full -rotate-12"></div>
         </div>
         
         {/* Lighter animated wave effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-white/10 backdrop-blur-sm 
-                        animate-wave-slow" 
-             style={{maskImage: 'linear-gradient(to bottom, transparent, black)'}}></div>
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-16 bg-white/10 backdrop-blur-sm animate-wave-slow" 
+          style={{maskImage: 'linear-gradient(to bottom, transparent, black)'}}>
+        </div>
         
+        {/* Header for the stats section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-8">
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Our Vision for Impact</h2>
+            <p className="text-blue-100 max-w-2xl mx-auto">
+              We're just getting started! These are the goals we're working toward as our community grows.
+            </p>
+          </div>
+        </div>
+        
+        {/* Stats cards with "Goal" label */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center backdrop-blur-sm rounded-lg py-6 px-2 bg-white/10 hover:bg-white/15 transition-colors">
+            <div className="text-center backdrop-blur-sm rounded-lg py-6 px-2 bg-white/10 hover:bg-white/15 transition-colors relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                Goal
+              </div>
               <div className="text-white text-4xl md:text-5xl font-bold">400+</div>
               <div className="text-blue-50 mt-2 text-lg">Water Points</div>
             </div>
-            <div className="text-center backdrop-blur-sm rounded-lg py-6 px-2 bg-white/10 hover:bg-white/15 transition-colors">
+            
+            <div className="text-center backdrop-blur-sm rounded-lg py-6 px-2 bg-white/10 hover:bg-white/15 transition-colors relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                Goal
+              </div>
               <div className="text-white text-4xl md:text-5xl font-bold">4,200+</div>
               <div className="text-blue-50 mt-2 text-lg">Community Members</div>
             </div>
-            <div className="text-center backdrop-blur-sm rounded-lg py-6 px-2 bg-white/10 hover:bg-white/15 transition-colors">
+            
+            <div className="text-center backdrop-blur-sm rounded-lg py-6 px-2 bg-white/10 hover:bg-white/15 transition-colors relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                Goal
+              </div>
               <div className="text-white text-4xl md:text-5xl font-bold">25K+</div>
               <div className="text-blue-50 mt-2 text-lg">Liters Shared</div>
             </div>
-            <div className="text-center backdrop-blur-sm rounded-lg py-6 px-2 bg-white/10 hover:bg-white/15 transition-colors">
+            
+            <div className="text-center backdrop-blur-sm rounded-lg py-6 px-2 bg-white/10 hover:bg-white/15 transition-colors relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full">
+                Goal
+              </div>
               <div className="text-white text-4xl md:text-5xl font-bold">120+</div>
               <div className="text-blue-50 mt-2 text-lg">Neighborhoods</div>
             </div>
+          </div>
+          
+          {/* Join the movement call to action */}
+          <div className="mt-10 text-center">
+            <p className="text-blue-100 mb-4">Be part of our growing network! Together we can reach these goals.</p>
+            <Link 
+              to="/volunteer" 
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-white hover:bg-blue-50 transition-all"
+            >
+              Join the Movement
+            </Link>
           </div>
         </div>
       </section>
@@ -680,9 +719,6 @@ export default function HomePage() {
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
               </div>
             </div>
           </div>
@@ -708,6 +744,9 @@ export default function HomePage() {
           <SubscriptionForm />
         </div>
       </section>
+
+      {/* Demo Volunteers Section - New Section Added */}
+      <DemoVolunteersSection />
     </div>
   );
 }

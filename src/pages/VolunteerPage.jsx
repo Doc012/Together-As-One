@@ -19,7 +19,7 @@ const VolunteerPage = () => {
   const emailContentRef = useRef(null);
   
   // Contact email where volunteers should send their information
-  const contactEmail = "water-volunteers@emfuleni-crisis.co.za";
+  const contactEmail = "taosa.register@gmail.com";
 
   const daysOfWeek = [
     { id: 0, name: 'Sunday', short: 'Sun' },

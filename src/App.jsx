@@ -11,6 +11,8 @@ import ContactPage from './pages/ContactPage';
 import FAQPage from './pages/FAQPage';
 import WaterConservationPage from './pages/WaterConservationPage';
 import CommunitiesPage from './pages/CommunitiesPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'; // Add this import
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/conservation" element={<WaterConservationPage />} />
               <Route path="/communities" element={<CommunitiesPage />} />
+              <Route path="/terms" element={<TermsOfServicePage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} /> {/* Add this route */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>

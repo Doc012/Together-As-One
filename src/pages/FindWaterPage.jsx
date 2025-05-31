@@ -37,6 +37,87 @@ const areasData = [
   }
 ];
 
+// Demo water points for users to see example listings
+const demoWaterPoints = [
+  {
+    id: "demo1",
+    name: "Villa Gardens Residence",
+    area: "Vanderbijlpark",
+    subArea: "Villa Gardens",
+    address: "42 Acacia Lane, Vanderbijlpark",
+    description: "Family home with 5000L storage tank and clean borehole water. Multiple taps available for filling containers.",
+    schedule: [
+      { day: "Tuesday", times: ["07:00 - 09:00"] },
+      { day: "Thursday", times: ["07:00 - 09:00"] },
+      { day: "Saturday", times: ["09:00 - 12:00"] }
+    ],
+    availableTimes: ["Tue, Thu: 07:00-09:00", "Sat: 09:00-12:00"],
+    availability: [
+      { day: 2, startHour: 7, endHour: 9 },
+      { day: 4, startHour: 7, endHour: 9 },
+      { day: 6, startHour: 9, endHour: 12 }
+    ],
+    location: {
+      latitude: -26.70250,
+      longitude: 27.83950
+    },
+    imageUrl: "https://s.hdnux.com/photos/61/17/31/12908103/4/rawImage.jpg",
+    isDemo: true
+  },
+  {
+    id: "demo2",
+    name: "Duncanville Family Home",
+    area: "Vereeniging",
+    subArea: "Duncanville",
+    address: "15 Maple Road, Duncanville",
+    description: "Residential property with borehole and multiple filling points. Covered waiting area available.",
+    schedule: [
+      { day: "Monday", times: ["16:00 - 18:00"] },
+      { day: "Wednesday", times: ["16:00 - 18:00"] },
+      { day: "Friday", times: ["16:00 - 18:00"] }
+    ],
+    availableTimes: ["Mon, Wed, Fri: 16:00-18:00"],
+    availability: [
+      { day: 1, startHour: 16, endHour: 18 },
+      { day: 3, startHour: 16, endHour: 18 },
+      { day: 5, startHour: 16, endHour: 18 }
+    ],
+    location: {
+      latitude: -26.67150,
+      longitude: 27.93820
+    },
+    imageUrl: "https://devvlsnxxkrq9.cloudfront.net/prod/assets/Newton-Swansea-5-bedrooms-Beautiful-House.jpg",
+    isDemo: true
+  },
+  {
+    id: "demo3",
+    name: "Riverside Borehole Share",
+    area: "Three Rivers",
+    subArea: "Riverside",
+    address: "24 River View Drive, Three Rivers",
+    description: "Modern home with high-capacity borehole system and covered waiting area. Multiple taps for quick filling.",
+    schedule: [
+      { day: "Monday", times: ["07:00 - 09:00"] },
+      { day: "Wednesday", times: ["07:00 - 09:00"] },
+      { day: "Friday", times: ["07:00 - 09:00"] },
+      { day: "Saturday", times: ["08:00 - 12:00"] }
+    ],
+    availableTimes: ["Mon, Wed, Fri: 07:00-09:00", "Sat: 08:00-12:00"],
+    availability: [
+      { day: 1, startHour: 7, endHour: 9 },
+      { day: 3, startHour: 7, endHour: 9 },
+      { day: 5, startHour: 7, endHour: 9 },
+      { day: 6, startHour: 8, endHour: 12 }
+    ],
+    location: {
+      latitude: -26.66870,
+      longitude: 27.95230
+    },
+    imageUrl: "https://interiordesign.net/wp-content/uploads/2024/12/Interior-Design-Westchester-Home-Amy-Courtney-Design-RockledgeDrive-29C.jpg",
+    isDemo: true
+  }
+];
+
 function debounce(func, wait) {
   let timeout;
   return function(...args) {
@@ -102,8 +183,18 @@ const FindWaterPage = () => {
           if (!points || !Array.isArray(points)) {
             throw new Error("Failed to load water points data");
           }
-          setWaterPoints(points);
-          setFilteredPoints(points);
+          
+          // Mark ALL water points as demo points by adding isDemo flag
+          const demoPoints = points.map(point => ({
+            ...point,
+            isDemo: true
+          }));
+          
+          // Combine real water points (now marked as demo) with existing demo points
+          const combinedPoints = [...demoWaterPoints, ...demoPoints];
+          
+          setWaterPoints(combinedPoints);
+          setFilteredPoints(combinedPoints);
           setIsLoading(false);
         };
         
@@ -784,6 +875,33 @@ const FindWaterPage = () => {
             isLoading={isLoading}
             onSelectWaterPoint={handleSelectWaterPoint}
           />
+        )}
+        
+        {/* Demo listing explanation - enhanced version with increased top margin */}
+        {!isLoading && filteredPoints.length > 0 && (
+          <div className="mt-12 mb-6 bg-blue-50 rounded-xl p-5 border border-blue-200 shadow-sm">
+            <div className="flex items-start">
+              <div className="bg-blue-500 p-3 rounded-full mr-4 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-blue-800 mb-2">Demo Platform</h3>
+                <p className="text-blue-700">
+                  You're viewing our demonstration platform with sample water points. These listings show how real volunteer water points will appear when our community begins sharing water resources. 
+                </p>
+                <div className="mt-3 flex space-x-4">
+                  <Link to="/volunteer" className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                    Become a Volunteer
+                  </Link>
+                  <Link to="/about" className="inline-flex items-center px-4 py-2 bg-white text-blue-600 border border-blue-200 rounded-lg text-sm font-medium hover:bg-blue-50 transition-colors">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
         
         {/* Pagination - if needed */}

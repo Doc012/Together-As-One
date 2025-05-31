@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaWater, FaUsers, FaQuestion, FaEnvelope } from 'react-icons/fa';
+import { FaBars, FaTimes, FaWater, FaUsers, FaQuestion, FaEnvelope, FaInfo, FaHandsHelping } from 'react-icons/fa';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,7 +79,7 @@ export default function Header() {
             {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
           
-          {/* Desktop navigation */}
+          {/* Desktop navigation - REORDERED */}
           <nav className="hidden md:flex space-x-1">
             <NavLink to="/" className={({isActive}) => 
               `px-4 py-2 rounded-md transition-all ${
@@ -108,15 +108,6 @@ export default function Header() {
             }>
               Volunteer
             </NavLink>
-            <NavLink to="/communities" className={({isActive}) => 
-              `px-4 py-2 rounded-md transition-all ${
-                isActive 
-                  ? 'font-medium text-blue-700 bg-blue-50' 
-                  : 'text-gray-800 hover:text-blue-700 hover:bg-blue-50'
-              }`
-            }>
-              Communities
-            </NavLink>
             <NavLink to="/conservation" className={({isActive}) => 
               `px-4 py-2 rounded-md transition-all ${
                 isActive 
@@ -126,14 +117,14 @@ export default function Header() {
             }>
               Water Tips
             </NavLink>
-            <NavLink to="/faq" className={({isActive}) => 
+            <NavLink to="/communities" className={({isActive}) => 
               `px-4 py-2 rounded-md transition-all ${
                 isActive 
                   ? 'font-medium text-blue-700 bg-blue-50' 
                   : 'text-gray-800 hover:text-blue-700 hover:bg-blue-50'
               }`
             }>
-              FAQ
+              Communities
             </NavLink>
             <NavLink to="/about" className={({isActive}) => 
               `px-4 py-2 rounded-md transition-all ${
@@ -143,6 +134,15 @@ export default function Header() {
               }`
             }>
               About
+            </NavLink>
+            <NavLink to="/faq" className={({isActive}) => 
+              `px-4 py-2 rounded-md transition-all ${
+                isActive 
+                  ? 'font-medium text-blue-700 bg-blue-50' 
+                  : 'text-gray-800 hover:text-blue-700 hover:bg-blue-50'
+              }`
+            }>
+              FAQ
             </NavLink>
             <NavLink to="/contact" className={({isActive}) => 
               `px-4 py-2 rounded-md transition-all ${
@@ -156,7 +156,7 @@ export default function Header() {
           </nav>
         </div>
         
-        {/* Mobile navigation */}
+        {/* Mobile navigation - REORDERED */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 py-3 px-2 rounded-lg bg-white shadow-lg border border-gray-100">
             <nav className="space-y-1">
@@ -182,7 +182,10 @@ export default function Header() {
                   }`
                 }
               >
-                Find Water
+                <div className="flex items-center">
+                  <FaWater className="mr-2" />
+                  Find Water
+                </div>
               </NavLink>
               <NavLink 
                 to="/volunteer" 
@@ -194,21 +197,9 @@ export default function Header() {
                   }`
                 }
               >
-                Volunteer
-              </NavLink>
-              <NavLink 
-                to="/communities" 
-                className={({isActive}) => 
-                  `block py-3 px-4 rounded-md transition-colors ${
-                    isActive 
-                      ? 'bg-blue-50 text-blue-700 font-medium' 
-                      : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700'
-                  }`
-                }
-              >
                 <div className="flex items-center">
-                  <FaUsers className="mr-2" />
-                  Communities
+                  <FaHandsHelping className="mr-2" />
+                  Volunteer
                 </div>
               </NavLink>
               <NavLink 
@@ -227,6 +218,36 @@ export default function Header() {
                 </div>
               </NavLink>
               <NavLink 
+                to="/communities" 
+                className={({isActive}) => 
+                  `block py-3 px-4 rounded-md transition-colors ${
+                    isActive 
+                      ? 'bg-blue-50 text-blue-700 font-medium' 
+                      : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700'
+                  }`
+                }
+              >
+                <div className="flex items-center">
+                  <FaUsers className="mr-2" />
+                  Communities
+                </div>
+              </NavLink>
+              <NavLink 
+                to="/about" 
+                className={({isActive}) => 
+                  `block py-3 px-4 rounded-md transition-colors ${
+                    isActive 
+                      ? 'bg-blue-50 text-blue-700 font-medium' 
+                      : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700'
+                  }`
+                }
+              >
+                <div className="flex items-center">
+                  <FaInfo className="mr-2" />
+                  About
+                </div>
+              </NavLink>
+              <NavLink 
                 to="/faq" 
                 className={({isActive}) => 
                   `block py-3 px-4 rounded-md transition-colors ${
@@ -240,18 +261,6 @@ export default function Header() {
                   <FaQuestion className="mr-2" />
                   FAQ
                 </div>
-              </NavLink>
-              <NavLink 
-                to="/about" 
-                className={({isActive}) => 
-                  `block py-3 px-4 rounded-md transition-colors ${
-                    isActive 
-                      ? 'bg-blue-50 text-blue-700 font-medium' 
-                      : 'text-gray-800 hover:bg-blue-50 hover:text-blue-700'
-                  }`
-                }
-              >
-                About
               </NavLink>
               <NavLink 
                 to="/contact" 

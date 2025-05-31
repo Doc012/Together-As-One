@@ -34,19 +34,34 @@ const Footer = () => {
               Building community resilience through water solidarity.
             </p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61577065883332" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
                 <FaFacebook size={20} />
                 <span className="sr-only">Facebook</span>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <FaTwitter size={20} />
-                <span className="sr-only">Twitter</span>
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <FaInstagram size={20} />
-                <span className="sr-only">Instagram</span>
-              </a>
-              <a href="https://wa.me/27123456789" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors">
+              
+              {/* Disabled Twitter link with coming soon tooltip */}
+              <div className="relative group">
+                <span className="text-gray-600 cursor-not-allowed opacity-60">
+                  <FaTwitter size={20} />
+                  <span className="sr-only">Twitter (Coming Soon)</span>
+                </span>
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-xs text-white rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                  Coming Soon
+                </div>
+              </div>
+              
+              {/* Disabled Instagram link with coming soon tooltip */}
+              <div className="relative group">
+                <span className="text-gray-600 cursor-not-allowed opacity-60">
+                  <FaInstagram size={20} />
+                  <span className="sr-only">Instagram (Coming Soon)</span>
+                </span>
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-xs text-white rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                  Coming Soon
+                </div>
+              </div>
+              
+              <a href="https://whatsapp.com/channel/0029Vb6AUXbGk1FsEBV3Gw1r" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-400 transition-colors">
                 <FaWhatsapp size={20} />
                 <span className="sr-only">WhatsApp</span>
               </a>
@@ -92,7 +107,7 @@ const Footer = () => {
                 <Link to="/privacy-policy" className="text-gray-400 hover:text-blue-400 transition-colors">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">Terms of Service</Link>
+                <Link to="/terms" className="text-gray-400 hover:text-white">Terms of Service</Link>
               </li>
             </ul>
           </div>
@@ -103,16 +118,35 @@ const Footer = () => {
             <address className="not-italic text-gray-400">
               <p className="mb-2">Emfuleni Municipality Area</p>
               <p className="mb-2">Gauteng, South Africa</p>
-              <p className="mb-2">
-                <a href="mailto:info@togetherasone.org.za" className="hover:text-blue-400 transition-colors">
-                  info@togetherasone.org.za
-                </a>
-              </p>
-              <p>
+              
+              <div className="space-y-2">
+                <p className="flex items-start">
+                  <span className="text-blue-400 text-xs uppercase font-semibold mr-2 mt-1">General:</span>
+                  <a href="mailto:taosa.info@gmail.com" className="hover:text-blue-400 transition-colors">
+                    taosa.info@gmail.com
+                  </a>
+                </p>
+                
+                <p className="flex items-start">
+                  <span className="text-blue-400 text-xs uppercase font-semibold mr-2 mt-1">Support:</span>
+                  <a href="mailto:taosa.help@gmail.com" className="hover:text-blue-400 transition-colors">
+                    taosa.help@gmail.com
+                  </a>
+                </p>
+                
+                <p className="flex items-start">
+                  <span className="text-blue-400 text-xs uppercase font-semibold mr-2 mt-1">Register:</span>
+                  <a href="mailto:taosa.register@gmail.com" className="hover:text-blue-400 transition-colors">
+                    taosa.register@gmail.com
+                  </a>
+                </p>
+              </div>
+              
+              {/* <p>
                 <a href="tel:+27123456789" className="hover:text-blue-400 transition-colors">
                   +27 12 345 6789
                 </a>
-              </p>
+              </p> */}
             </address>
           </div>
         </div>

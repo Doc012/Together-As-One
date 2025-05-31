@@ -444,7 +444,7 @@ ${emailContent}`;
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Email</p>
-                    <p className="text-lg font-medium text-gray-800">contact@watershare.co.za</p>
+                    <p className="text-lg font-medium text-gray-800">taosa.info@gmail.com</p>
                   </div>
                 </div>
                 
